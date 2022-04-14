@@ -21,7 +21,7 @@ You can override the defaults by following the the short guide below.
 
 3. Copy and paste either the id or the name into `software.txt`.
 
-4. Reopen the tool it will now use the software listed in `software.txt` instead of the defaults.
+4. Reopen the tool and now it will now use the software listed in `software.txt` instead of the defaults.
 
 *Note: If the software you want to include has a duplicate name in winget, then use the id instead.*
 
