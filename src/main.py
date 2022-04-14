@@ -1,25 +1,12 @@
 import ctypes
 import subprocess
 import sys
-from time import sleep
+import time
 import winreg
 import os
 
-software = ["Microsoft.VisualStudioCode",
-            "Microsoft.VisualStudio.2022.Community",
-            "IObit.AdvancedSystemCare",
-            "Discord.Discord",
-            "GitHub.GitHubDesktop",
-            "IObit.DriverBooster9",
-            "VB-Audio.Voicemeeter.Banana",
-            "Valve.Steam",
-            "RARLab.WinRAR",
-            "Microsoft.dotnet",
-            "Python.Python.3",
-            "Microsoft.PowerShell",
-            "EpicGames.EpicGamesLauncher",
-            "WinDbg Preview",
-            "Spotify.Spotify"]
+
+software = []
 
 registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV\Start", 4, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt\Start", 4, winreg.REG_DWORD),
@@ -141,18 +128,22 @@ def optimize_network() -> None:
     
     print("Finished network optimization..")
 
-def optimize_registry() -> None:
-    print("Beginning registry optimization..")
+def optimize_windows() -> None:
+    print("Beginning Windows optimization..")
     
     for item in registry_keys:
         write_value_to_registry_key(item[0], item[1], item[2])
         
-    print("Finished registry optimization..")
+    print("Finished Windows optimization..")
 
 
 def install_software() -> None:
     print("Beginning software installation..")
     
+    if len(software) == 0:
+        print("No software listed in software.txt..")
+        return
+
     for item in software:
         try:        
             subprocess.run(f"winget install -h \"{item}\"")
@@ -193,65 +184,75 @@ def disable_autoupdates() -> None:
     print("Finished auto update removal..")
 
 def main():
-    user_input = 1337
+    menu = """
+ Options\t\t\t  Descriptions
+----------------------------------------------------------------------------------
+| 1: Optimize Windows\t\t| General performance and gaming optimizations \t | 
+| 2: Optimize Network\t\t| Wi-Fi and Ethernet optimizations \t\t |
+| 3: Disable Telemetry\t\t| Disables telemetry data collection \t\t |
+| 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
+| 5: Install applications\t| Installs software located in software.txt \t |
+| 6: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
+| 7: All of the above\t\t| Chooses all options \t\t\t\t |
+----------------------------------------------------------------------------------
+"""
     
-    try:
-        user_input = int(input("\nOptions\n----------------------\n1: Optimize registry \n2: Optimize network \n3: Install applications \n4: Activate Windows 10/11 Pro \n5: Disable Telemetry \n6: Disable Auto Updates \n7: All \n\nInput: "))
+    while(True):
+        os.system("cls")
+        print(menu)
         
-    except:
-        print("Invalid input")
-        sleep(2)
-        return
+        user_input = input("What would you like to do? [1-7]: ")
         
-    if user_input == 1:
-        optimize_registry()
-        sleep(2)
-    
-    elif user_input == 2:
-        optimize_network()
-        sleep(2)
+        if user_input.isdigit() == False:
+            continue
         
-    elif user_input == 3:
-        install_software()
-        sleep(2)
-    
-    elif user_input == 4:
-        activate_win_pro()
-        sleep(2)
-    
-    elif user_input == 5:
-        disable_telemetry()
-        sleep(2)
-    
-    elif user_input == 6:
-        disable_autoupdates()
-        sleep(2)
-    
-    elif user_input == 7:
-        optimize_registry()
-        optimize_network()
-        install_software()
-        activate_win_pro()
-        disable_telemetry()
-        disable_autoupdates()
-        sleep(2)
+        user_input = int(user_input)
         
+        if user_input == 1:
+            optimize_windows()
+            time.sleep(2)
+        
+        elif user_input == 2:
+            optimize_network()
+            time.sleep(2)
+            
+        elif user_input == 3:
+            disable_telemetry()
+            time.sleep(2)
+        
+        elif user_input == 4:
+            disable_autoupdates()
+            time.sleep(2)
+        
+        elif user_input == 5:
+            install_software()
+            time.sleep(2)
+        
+        elif user_input == 6:
+            activate_win_pro()
+            time.sleep(2)
+        
+        elif user_input == 7:
+            optimize_windows()
+            optimize_network()
+            disable_telemetry()
+            disable_autoupdates()
+            activate_win_pro()
+            install_software()
+            time.sleep(2)
+            
 if __name__ == "__main__":
     if ctypes.windll.shell32.IsUserAnAdmin() == False:
         print("I must be ran as administrator or I can't apply changes.")
         
         if input("Restart as admin (yes/no)? ") == 'yes':
-            subprocess.run("powershell.exe Start-Process '.\WST.exe' -Verb runAs")
+            subprocess.run("powershell.exe Start-Process '.\WinOptimizer.exe' -Verb runAs")
             
         sys.exit()
         
     if os.path.exists("software.txt") == True:
-        software = None
-        
         with open("software.txt", 'r+') as f:
             software = f.readlines()
             f.close()
     
-    while(True):
-        os.system("cls")
-        main()
+    main()
