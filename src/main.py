@@ -11,7 +11,7 @@ software = ["Microsoft.VisualStudioCode",
             "Discord.Discord",
             "GitHub.GitHubDesktop",
             "IObit.DriverBooster9",
-            "Microsoft.WindowsTerminal",
+            "VB-Audio.Voicemeeter.Banana",
             "Valve.Steam",
             "RARLab.WinRAR",
             "Microsoft.dotnet",
@@ -178,6 +178,7 @@ def disable_telemetry() -> None:
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection\AllowTelemetry", 0, winreg.REG_DWORD)
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC\PreventHandwritingDataSharing", 1, winreg.REG_DWORD)
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched\NonBestEffortLimit", 0, winreg.REG_DWORD)
+    
     print("Finished telemetry removal..")
 
 def disable_autoupdates() -> None:
