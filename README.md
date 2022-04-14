@@ -1,4 +1,10 @@
 # windows-setup-tool
+[![GitHub all releases](https://img.shields.io:/github/downloads/Anequit/windows-setup-tool/total)](https://github.com/Anequit/SCD/releases)
+[![GitHub release (latest by date)](https://img.shields.io:/github/v/release/Anequit/windows-setup-tool)](https://github.com/Anequit/SCD/releases)
+[![GitHub repo size](https://img.shields.io:/github/repo-size/Anequit/windows-setup-tool)](https://github.com/Anequit/SCD/releases)
+
+
+## About
 This tool was made to make my life a little easier when I have to reinstall my OS for the 900th time. It's build specifically for myself, but you can tweak it or adjust it how you'd like. 
 
 
