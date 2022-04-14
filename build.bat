@@ -1,1 +1,1 @@
-pyinstaller --noconfirm --clean -D -F --specpath ./build -i ./src/Assets/ICON.ico -n "Windows Setup Tool" ./src/main.py
+pyinstaller --noconfirm --clean -D -F -i ./src/Assets/ICON.ico -n "Windows Setup Tool" ./src/main.py
