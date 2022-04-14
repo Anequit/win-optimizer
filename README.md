@@ -16,8 +16,25 @@ This tool optimizes windows to it's fullest potential for gaming, disables windo
 You can override the defaults by following the the short guide below.
 
 1. Create a `software.txt` file in the same directory as the tool.
-2. Open a terminal and search for the software you want to include with `winget search <name>`
-3. Copy and paste either the id or the name into `software.txt`
+
+2. Open a terminal and search for the software you want to include with `winget search <name>`.
+
+3. Copy and paste either the id or the name into `software.txt`.
+
 4. Reopen the tool it will now use the software listed in `software.txt` instead of the defaults.
 
 *Note: If the software you want to include has a duplicate name in winget, then use the id instead.*
+
+
+## Flagged as virus?
+Due to how this program writes changes to Windows it's flagged as a virus. If that worries you, then you can compile the binary yourself with the guide below.
+
+1. Download the [latest version](https://www.python.org/downloads/) of Python.
+
+2. Clone the repository or download as zip and extract it. If you don't know how to do that then here is a [tutorial](https://www.youtube.com/watch?v=X5e3xQBeqf8).
+
+3. Navigate to the repository and run `pip install -r requirements.txt` in the terminal. If you've never used the terminal then [here](https://wiki.communitydata.science/Windows_terminal_navigation) is a simple article on how to use it.
+
+4. Once, that's finished you can run `build.bat`.
+
+5. You should now see your brand new binary waiting for you to run it!
