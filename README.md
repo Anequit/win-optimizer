@@ -31,7 +31,7 @@ Due to how this program writes changes to Windows it's flagged as a virus. If th
 
 1. Download the [latest version](https://www.python.org/downloads/) of Python.
 
-2. Clone the repository or download as zip and extract it. If you don't know how to do that then here is a [tutorial](https://www.youtube.com/watch?v=X5e3xQBeqf8).
+2. Clone the repository or download as zip and extract it. If you don't know how to do that then [here](https://www.youtube.com/watch?v=X5e3xQBeqf8) is a tutorial.
 
 3. Navigate to the repository and run `pip install -r requirements.txt` in the terminal. If you've never used the terminal then [here](https://wiki.communitydata.science/Windows_terminal_navigation) is a simple article on how to use it.
 
