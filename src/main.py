@@ -157,14 +157,14 @@ def install_software() -> None:
         
     print("Finished software installation..")
 
-def activate_win11_pro() -> None:
-    print("Beginning Windows 11 Pro activation..")
+def activate_win_pro() -> None:
+    print("Beginning Windows 10/11 Pro activation..")
     
     subprocess.run(r"powershell.exe slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
     subprocess.run(r"powershell.exe slmgr.vbs /skms kms8.msguides.com")
     subprocess.run(r"powershell.exe slmgr.vbs /ato")
     
-    print("Finished Windows 11 Pro activation..")
+    print("Finished Windows 10/11 Pro activation..")
 
 def disable_telemetry() -> None:
     print("Beginning telemetry removal..")
@@ -189,7 +189,7 @@ def main():
     user_input = 1337
     
     try:
-        user_input = int(input("\nOptions\n----------------------\n1: Optimize registry \n2: Optimize network \n3: Install applications \n4: Activate Windows 11 Pro \n5: Disable Telemetry \n6: Disable Auto Updates \n7: All \n\nInput: "))
+        user_input = int(input("\nOptions\n----------------------\n1: Optimize registry \n2: Optimize network \n3: Install applications \n4: Activate Windows 10/11 Pro \n5: Disable Telemetry \n6: Disable Auto Updates \n7: All \n\nInput: "))
         
     except:
         print("Invalid input")
@@ -209,7 +209,7 @@ def main():
         sleep(2)
     
     elif user_input == 4:
-        activate_win11_pro()
+        activate_win_pro()
         sleep(2)
     
     elif user_input == 5:
@@ -224,7 +224,7 @@ def main():
         optimize_registry()
         optimize_network()
         install_software()
-        activate_win11_pro()
+        activate_win_pro()
         disable_telemetry()
         disable_autoupdates()
         sleep(2)
@@ -234,7 +234,7 @@ if __name__ == "__main__":
         print("I must be ran as administrator or I can't apply changes.")
         
         if input("Restart as admin (yes/no)? ") == 'yes':
-            subprocess.run("powershell.exe Start-Process '.\Windows Setup Tool.exe' -Verb runAs")
+            subprocess.run("powershell.exe Start-Process '.\WST.exe' -Verb runAs")
             
         sys.exit()
         
