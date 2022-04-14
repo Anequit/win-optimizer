@@ -154,7 +154,12 @@ def install_software() -> None:
     print("Beginning software installation..")
     
     for item in software:
-        subprocess.run(f"winget install -h \"{item}\"")
+        try:        
+            subprocess.run(f"winget install -h \"{item}\"")
+            
+        except:
+            print(f"{item} failed to install..")
+            continue
         
     print("Finished software installation..")
 
