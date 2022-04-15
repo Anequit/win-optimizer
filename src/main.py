@@ -1,10 +1,9 @@
 import ctypes
+import os
 import subprocess
 import sys
 import time
 import winreg
-import os
-
 
 software = []
 
