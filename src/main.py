@@ -185,7 +185,7 @@ def main():
 | 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
 | 5: Install applications\t| Installs software located in software.txt \t |
 | 6: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
-| 7: Remove Junk Files\t\t| Removes system junk files \t\t\t |
+| 7: System Cleanup\t\t| Removes junk files \t\t\t\t |
 | 8: All of the above\t\t| Chooses all options \t\t\t\t |
 ----------------------------------------------------------------------------------
 """
