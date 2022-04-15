@@ -228,6 +228,10 @@ def main():
             install_software()
             time.sleep(2)
             
+        if input("\nWould you like to restart to apply changes (yes/no)? ") == "yes":
+            subprocess.run(r"shutdown.exe /r /t 0")
+        
+        
 if __name__ == "__main__":
     if ctypes.windll.shell32.IsUserAnAdmin() == False:
         print("I must be ran as administrator or I can't apply changes.")
