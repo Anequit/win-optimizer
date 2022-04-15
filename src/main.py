@@ -123,18 +123,18 @@ def optimize_network() -> None:
         write_value_to_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TcpDelAckTicks", 0, winreg.REG_DWORD)
         write_value_to_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TCPNoDelay", 1, winreg.REG_DWORD)
     
-    print("Finished network optimization..")
+    print(" - Network is now optimized.")
 
 def optimize_windows() -> None:
     for item in registry_keys:
         write_value_to_registry_key(item[0], item[1], item[2])
         
-    print("Finished Windows optimization..")
+    print(" - Windows is now optimized.")
 
 
 def install_software() -> None:
     if len(software) == 0:
-        print("No software listed in software.txt..")
+        print(" - No software listed in software.txt.")
         return
 
     for item in software:
@@ -145,21 +145,21 @@ def install_software() -> None:
             print(f"{item} failed to install..")
             continue
         
-    print("Finished software installation..")
+    print(" - All software installed.")
 
 def activate_win_pro() -> None:
     subprocess.run(r"powershell.exe slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
     subprocess.run(r"powershell.exe slmgr.vbs /skms kms8.msguides.com")
     subprocess.run(r"powershell.exe slmgr.vbs /ato")
     
-    print("Finished Windows 10/11 Pro activation..")
+    print(" - Windows is now activated.")
 
 def disable_telemetry() -> None:
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection\AllowTelemetry", 0, winreg.REG_DWORD)
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC\PreventHandwritingDataSharing", 1, winreg.REG_DWORD)
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched\NonBestEffortLimit", 0, winreg.REG_DWORD)
     
-    print("Finished telemetry removal..")
+    print(" - All telemetry disabled.")
 
 def disable_autoupdates() -> None:
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\AutoInstallMinorUpdates", 0, winreg.REG_DWORD)
@@ -168,7 +168,7 @@ def disable_autoupdates() -> None:
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\SetAutoRestartNotificationDisable", 1, winreg.REG_DWORD)
     write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps\AutoDownloadAndUpdateMapData", 0, winreg.REG_DWORD)
     
-    print("Finished auto update removal..")
+    print(" - Auto updates disabled.")
 
 def main():
     menu = """
