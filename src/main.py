@@ -194,45 +194,33 @@ def main():
         os.system("cls")
         print(menu)
         
-        user_input = input("What would you like to do? [1-7]: ")
+        user_input = input("What would you like to do? [1-8]: \n")
+        print()
         
-        if user_input.isdigit() == False:
+        if user_input.isdigit() == True:
+            user_input = int(user_input)
+            
+            if user_input <= 0 or user_input >= 9:
+                continue    
+        
+        else:
             continue
         
-        user_input = int(user_input)
-        
-        if user_input == 1:
-            optimize_windows()
-            time.sleep(2)
-        
-        elif user_input == 2:
-            optimize_network()
-            time.sleep(2)
-            
-        elif user_input == 3:
-            disable_telemetry()
-            time.sleep(2)
-        
-        elif user_input == 4:
-            disable_autoupdates()
-            time.sleep(2)
-        
-        elif user_input == 5:
-            install_software()
-            time.sleep(2)
-        
-        elif user_input == 6:
-            activate_win_pro()
-            time.sleep(2)
-        
-        elif user_input == 7:
+        if user_input == 1: optimize_windows()
+        elif user_input == 2: optimize_network()
+        elif user_input == 3: disable_telemetry()
+        elif user_input == 4: disable_autoupdates()
+        elif user_input == 5: install_software()
+        elif user_input == 6: activate_win_pro()
+        elif user_input == 7: clean_system_junk()
+        elif user_input == 8:
             optimize_windows()
             optimize_network()
             disable_telemetry()
             disable_autoupdates()
-            activate_win_pro()
             install_software()
-            time.sleep(2)
+            activate_win_pro()
+            clean_system_junk()
             
         if input("\nWould you like to restart to apply changes (yes/no)? ") == "yes":
             subprocess.run(r"shutdown.exe /r /t 0")
