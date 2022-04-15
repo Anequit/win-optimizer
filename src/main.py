@@ -170,6 +170,11 @@ def disable_autoupdates() -> None:
     
     print(" - Auto updates disabled.")
 
+def clean_system_junk() -> None:
+    subprocess.run(r"cleanmgr.exe /verylowdisk /setup /autoclean")
+    
+    print(" - System junk has been removed.")
+
 def main():
     menu = """
  Options\t\t\t  Descriptions
@@ -180,7 +185,8 @@ def main():
 | 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
 | 5: Install applications\t| Installs software located in software.txt \t |
 | 6: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
-| 7: All of the above\t\t| Chooses all options \t\t\t\t |
+| 7: Remove Junk Files\t\t| Removes system junk files \t\t\t |
+| 8: All of the above\t\t| Chooses all options \t\t\t\t |
 ----------------------------------------------------------------------------------
 """
     
