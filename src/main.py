@@ -194,7 +194,7 @@ def main():
         os.system("cls")
         print(menu)
         
-        user_input = input("What would you like to do? [1-8]: \n")
+        user_input = input("What would you like to do? [1-8]: ")
         print()
         
         if user_input.isdigit() == True:
