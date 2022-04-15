@@ -230,8 +230,8 @@ if __name__ == "__main__":
     if ctypes.windll.shell32.IsUserAnAdmin() == False:
         print("I must be ran as administrator or I can't apply changes.")
         
-        if input("Restart as admin (yes/no)? ") == 'yes':
             subprocess.run("powershell.exe Start-Process '.\WinOptimizer.exe' -Verb runAs")
+        if input("Restart as admin (yes/no)? ") == "yes":
             
         sys.exit()
         
