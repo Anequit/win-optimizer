@@ -52,6 +52,24 @@ registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstS
                  (r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched\TimerResolution", 0, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling\PowerThrottlingOff", 1, winreg.REG_DWORD)]
 
+cleanup_keys = [(r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\BranchCache\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\D3D Shader Cache\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Delivery Optimization Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Diagnostic Data Viewer database files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Downloaded Program Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Feedback Hub Archive log files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Internet Cache Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Language Pack\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Old ChkDsk Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Setup Log Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\System error memory dump files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\System error minidump files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Temporary Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Temporary Setup Files\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Update Cleanup\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Defender\StateFlags0000", 2, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Error Reporting Files\StateFlags0000", 2, winreg.REG_DWORD)]
 
 def parse_registry_path(fullpath: str) -> tuple[winreg.HKEYType, str, str]:
     root, split_path = fullpath.split('\\', 1)
@@ -167,7 +185,10 @@ def disable_autoupdates() -> None:
     print(" - Auto updates disabled.")
 
 def clean_system_junk() -> None:
-    subprocess.run(r"cleanmgr.exe /verylowdisk /setup /autoclean")
+    for item in cleanup_keys:
+        write_value_to_registry_key(item[0], item[1], item[2])
+    
+    subprocess.run(r"cleanmgr.exe /sagerun")
     
     print(" - System junk has been removed.")
 
