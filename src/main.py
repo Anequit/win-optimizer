@@ -28,6 +28,7 @@ registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstS
                  (r"HKEY_CURRENT_USER\Control Panel\Desktop\AutoEndTasks", "1", winreg.REG_SZ),
                  (r"HKEY_CURRENT_USER\Control Panel\Mouse\MouseHoverTime", "100", winreg.REG_SZ),
                  (r"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\DesktopProcess", 1, winreg.REG_DWORD),
+                 (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction\Enable", "Y", winreg.REG_SZ),
                  (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Max Cached Icons", 2000, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\NetworkThrottlingIndex", 4294967295, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\SystemResponsiveness", 0, winreg.REG_DWORD),
