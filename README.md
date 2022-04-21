@@ -46,7 +46,11 @@ Due to how this program writes changes to Windows it's flagged as a virus. If th
 File integrity allows you to verify that the file you downloaded is identical the one uploaded. In the release, there will be a couple hashes you can use to verify the integrity of the binary. 
 
 1. Start by downloading the latest version [here](https://github.com/Anequit/win-optimizer/releases/latest), then copy and save the SHA256 hash.
+
 2. Open powershell and navigate to the directory where `WinOptimizer.exe` is located.
+
 3. Run the command `Get-FileHash .\WinOptimizer.exe`.
+
 4. Compare the hash listed with the hash from the release page.
+
 5. If they match, then the files are identical.
