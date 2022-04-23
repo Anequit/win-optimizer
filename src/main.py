@@ -221,8 +221,7 @@ def main():
             clean_system_junk()
             
         if input("\nWould you like to restart to apply changes (yes/no)? ") == "yes":
-            subprocess.run(r"shutdown.exe /r /t 0")
-        
+            subprocess.run(r"shutdown.exe /r /t 5")
         
 if __name__ == "__main__":
     if ctypes.windll.shell32.IsUserAnAdmin() == False:
