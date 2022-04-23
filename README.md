@@ -9,7 +9,7 @@ This tool was made to make my life a little easier when I have to reinstall my O
 
 
 ## What does this do?
-This tool optimizes windows to it's fullest potential for gaming, disables windows telemetry and data collection, disables auto updating and disables the update restart prompt. It also optimizes the network configuration behind the scenes to give you more bandwidth in gaming. This tool can also install a suite of software for you, so you don't have to spend 20 minutes downloading and installing from 15 different websites. Finally, it also activates windows 10/11 pro, so you don't need to deal with the limitations of home edition.
+This tool optimizes windows to it's fullest potential, disables telemetry/data collection, disables auto updating, and activates windows for you. The tweaks made by this tool will increase overall system performance, framerate in games, and network performance, but will also cause windows to draw more power. Due to this extra power draw, this tool may not be ideal for laptops with a working battery.
 
 
 ## Flagged as virus?
