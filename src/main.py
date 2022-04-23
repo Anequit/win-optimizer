@@ -2,7 +2,6 @@ import ctypes
 import os
 import subprocess
 import sys
-import time
 import winreg
 
 registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV\Start", 4, winreg.REG_DWORD),
@@ -176,7 +175,7 @@ def clean_system_junk() -> None:
     
     print(" - System junk has been removed.")
 
-def main():
+def main() -> None:
     menu = """
  Options\t\t\t  Descriptions
 ----------------------------------------------------------------------------------
