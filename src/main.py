@@ -5,8 +5,6 @@ import sys
 import time
 import winreg
 
-software = []
-
 registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV\Start", 4, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt\Start", 4, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc\Start", 4, winreg.REG_DWORD),
@@ -147,22 +145,6 @@ def optimize_windows() -> None:
         
     print(" - Windows is now optimized.")
 
-
-def install_software() -> None:
-    if len(software) == 0:
-        print(" - No software listed in software.txt.")
-        return
-
-    for item in software:
-        try:        
-            subprocess.run(f"winget install -h \"{item}\"")
-            
-        except:
-            print(f"{item} failed to install..")
-            continue
-        
-    print(" - All software installed.")
-
 def activate_win_pro() -> None:
     subprocess.run(r"powershell.exe slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
     subprocess.run(r"powershell.exe slmgr.vbs /skms kms8.msguides.com")
@@ -202,10 +184,9 @@ def main():
 | 2: Optimize Network\t\t| Wi-Fi and Ethernet optimizations \t\t |
 | 3: Disable Telemetry\t\t| Disables telemetry data collection \t\t |
 | 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
-| 5: Install applications\t| Installs software located in software.txt \t |
-| 6: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
-| 7: System Cleanup\t\t| Removes junk files \t\t\t\t |
-| 8: All of the above\t\t| Chooses all options \t\t\t\t |
+| 5: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
+| 6: System Cleanup\t\t| Removes junk files \t\t\t\t |
+| 7: All of the above\t\t| Chooses all options \t\t\t\t |
 ----------------------------------------------------------------------------------
 """
     
@@ -213,7 +194,7 @@ def main():
         os.system("cls")
         print(menu)
         
-        user_input = input("What would you like to do? [1-8]: ")
+        user_input = input("What would you like to do? [1-7]: ")
         print()
         
         if user_input.isdigit() == True:
@@ -229,15 +210,13 @@ def main():
         elif user_input == 2: optimize_network()
         elif user_input == 3: disable_telemetry()
         elif user_input == 4: disable_autoupdates()
-        elif user_input == 5: install_software()
-        elif user_input == 6: activate_win_pro()
-        elif user_input == 7: clean_system_junk()
-        elif user_input == 8:
+        elif user_input == 5: activate_win_pro()
+        elif user_input == 6: clean_system_junk()
+        elif user_input == 7:
             optimize_windows()
             optimize_network()
             disable_telemetry()
             disable_autoupdates()
-            install_software()
             activate_win_pro()
             clean_system_junk()
             
@@ -254,9 +233,4 @@ if __name__ == "__main__":
             
         sys.exit()
         
-    if os.path.exists("software.txt") == True:
-        with open("software.txt", 'r+') as f:
-            software = f.readlines()
-            f.close()
-    
     main()
