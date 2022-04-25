@@ -99,6 +99,15 @@ def write_value_to_registry_key(fullpath: str, value: str, value_type: int) -> N
     opened_key = winreg.CreateKeyEx(root, path, 0, winreg.KEY_ALL_ACCESS)
     winreg.SetValueEx(opened_key, key, 0, value_type, value)
 
+def delete_registry_key(fullpath: str) -> None:
+    root, path, key = parse_registry_path(fullpath)
+
+    opened_key = winreg.CreateKeyEx(root, path, 0, winreg.KEY_ALL_ACCESS)
+    try:
+        winreg.DeleteValue(opened_key, key)
+    except:
+        return
+
 def extract_network_interfaces() -> list[str]:
     items = []
     
