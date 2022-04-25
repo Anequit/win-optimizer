@@ -143,9 +143,9 @@ def optimize_network() -> None:
     os.system("netsh interface ipv6 set subinterface \"Wi-Fi\" mtu=1500 store=persistent")
     
     for interface in extract_network_interfaces():
-        write_value_to_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TcpAckFrequency", 1, winreg.REG_DWORD)
-        write_value_to_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TcpDelAckTicks", 0, winreg.REG_DWORD)
-        write_value_to_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TCPNoDelay", 1, winreg.REG_DWORD)
+        delete_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TcpAckFrequency")
+        delete_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TcpDelAckTicks")
+        delete_registry_key(rf"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{interface}\TCPNoDelay")
     
     print(" - Network is now optimized.")
 
