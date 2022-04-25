@@ -130,7 +130,7 @@ def optimize_network() -> None:
     os.system("PowerShell.exe Set-NetOffloadGlobalSetting -ReceiveSideScaling enabled")
     os.system("PowerShell.exe Disable-NetAdapterLso -Name *")
     os.system("PowerShell.exe Enable-NetAdapterChecksumOffload -Name *")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -EcnCapability disabled")
+    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -EcnCapability enabled")
     os.system("PowerShell.exe Set-NetOffloadGlobalSetting -Chimney disabled")
     os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -Timestamps disabled")
     os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -MaxSynRetransmissions 2")
