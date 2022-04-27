@@ -71,6 +71,13 @@ cleanup_keys = [(r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\
                 (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Defender\StateFlags0000", 2, winreg.REG_DWORD),
                 (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Error Reporting Files\StateFlags0000", 2, winreg.REG_DWORD)]
 
+def run(commands: list):
+    for command in commands:
+        try:
+            subprocess.check_output(["powershell.exe", command], stderr=None)
+        except:
+            return
+
 def parse_registry_path(fullpath: str) -> tuple[winreg.HKEYType, str, str]:
     root, split_path = fullpath.split('\\', 1)
     split_path, key = split_path.rsplit('\\', 1)
@@ -107,53 +114,39 @@ def delete_registry_key(fullpath: str) -> None:
     except:
         return
 
-def extract_network_interfaces() -> list[str]:
-    items = []
-    
-    interfaces = winreg.OpenKeyEx(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces", 0, winreg.KEY_READ)
-    
-    for x in range(100):
-        try:
-            items.append(winreg.EnumKey(interfaces, x))
-            
-        except:
-            break
-    
-    return items
-
 def optimize_network() -> None:
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -AutoTuningLevelLocal normal")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -ScalingHeuristics disabled")
-    os.system("netsh int tcp set supplemental internet congestionprovider=CUBIC")
-    os.system("PowerShell.exe Set-NetOffloadGlobalSetting -ReceiveSegmentCoalescing disabled")
-    os.system("PowerShell.exe Set-NetOffloadGlobalSetting -ReceiveSideScaling enabled")
-    os.system("PowerShell.exe Disable-NetAdapterLso -Name *")
-    os.system("PowerShell.exe Enable-NetAdapterChecksumOffload -Name *")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -EcnCapability enabled")
-    os.system("PowerShell.exe Set-NetOffloadGlobalSetting -Chimney disabled")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -Timestamps disabled")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -MaxSynRetransmissions 2")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -NonSackRttResiliency disabled")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -InitialRto 2000")
-    os.system("PowerShell.exe Set-NetTCPSetting -SettingName internet -MinRto 300")
-    os.system("netsh interface ipv4 set subinterface \"Ethernet\" mtu=1500 store=persistent")
-    os.system("netsh interface ipv6 set subinterface \"Ethernet\" mtu=1500 store=persistent")
-    os.system("netsh interface ipv4 set subinterface \"Wi-Fi\" mtu=1500 store=persistent")
-    os.system("netsh interface ipv6 set subinterface \"Wi-Fi\" mtu=1500 store=persistent")
-    
+    run(["Set-NetTCPSetting -SettingName internet -AutoTuningLevelLocal normal",
+        "Set-NetTCPSetting -SettingName internet -ScalingHeuristics disabled",
+        "netsh int tcp set supplemental internet congestionprovider=CUBIC",
+        "Set-NetOffloadGlobalSetting -ReceiveSegmentCoalescing disabled",
+        "Set-NetOffloadGlobalSetting -ReceiveSideScaling enabled",
+        "Disable-NetAdapterLso -Name *",
+        "Enable-NetAdapterChecksumOffload -Name *",
+        "Set-NetTCPSetting -SettingName internet -EcnCapability disabled",
+        "Set-NetOffloadGlobalSetting -Chimney disabled",
+        "Set-NetTCPSetting -SettingName internet -Timestamps disabled",
+        "Set-NetTCPSetting -SettingName internet -MaxSynRetransmissions 2",
+        "Set-NetTCPSetting -SettingName internet -NonSackRttResiliency disabled",
+        "Set-NetTCPSetting -SettingName internet -InitialRto 2000",
+        "Set-NetTCPSetting -SettingName internet -MinRto 300",
+        "netsh interface ipv4 set subinterface \"Ethernet\" mtu=1500 store=persistent",
+        "netsh interface ipv6 set subinterface \"Ethernet\" mtu=1500 store=persistent",
+        "netsh interface ipv4 set subinterface \"Wi-Fi\" mtu=1500 store=persistent",
+        "netsh interface ipv6 set subinterface \"Wi-Fi\" mtu=1500 store=persistent"])
     
     print(" - Network is now optimized.")
 
 def optimize_windows() -> None:
     for item in registry_keys:
         write_value_to_registry_key(item[0], item[1], item[2])
-        
+    
+    
     print(" - Windows is now optimized.")
 
 def activate_win_pro() -> None:
-    subprocess.run(r"powershell.exe slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
-    subprocess.run(r"powershell.exe slmgr.vbs /skms kms8.msguides.com")
-    subprocess.run(r"powershell.exe slmgr.vbs /ato")
+    run([r"slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
+        r"slmgr.vbs /skms kms8.msguides.com",
+        r"slmgr.vbs /ato"])
     
     print(" - Windows is now activated.")
 
@@ -177,7 +170,7 @@ def clean_system_junk() -> None:
     for item in cleanup_keys:
         write_value_to_registry_key(item[0], item[1], item[2])
     
-    subprocess.run(r"cleanmgr.exe /sagerun")
+    run([r"cleanmgr.exe /sagerun"])
     
     print(" - System junk has been removed.")
 
@@ -226,14 +219,14 @@ def main() -> None:
             clean_system_junk()
             
         if input("\nWould you like to restart to apply changes (yes/no)? ") == "yes":
-            subprocess.run(r"shutdown.exe /r /t 5")
+            run([r"shutdown.exe /r /t 5"])
         
 if __name__ == "__main__":
     if ctypes.windll.shell32.IsUserAnAdmin() == False:
         print("I must be ran as administrator or I can't apply changes.")
         
         if input("Restart as admin (yes/no)? ") == "yes":
-            subprocess.run(r"powershell.exe Start-Process '.\WinOptimizer.exe' -Verb runAs")
+            run([r"Start-Process '.\WinOptimizer.exe' -Verb runAs"])
             
         sys.exit()
         
