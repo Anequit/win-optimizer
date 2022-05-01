@@ -5,7 +5,7 @@
 
 
 ## About
-This tool was made to make my life a little easier when I have to reinstall my OS for the 900th time. It's build specifically for myself, but you can tweak it or adjust it how you'd like. 
+This tool was made to make my life a little easier when I have to reinstall my OS for the 900th time.
 
 
 ## What does this do?
