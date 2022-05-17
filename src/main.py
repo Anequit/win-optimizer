@@ -162,9 +162,8 @@ def activate_win_pro() -> None:
     print(" - Windows is now activated.")
 
 def disable_telemetry() -> None:
-    write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection\AllowTelemetry", 0, winreg.REG_DWORD)
-    write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC\PreventHandwritingDataSharing", 1, winreg.REG_DWORD)
-    write_value_to_registry_key(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched\NonBestEffortLimit", 0, winreg.REG_DWORD)
+    for item in telemetry_keys:
+        write_value_to_registry_key(item[0], item[1], item[2])
     
     print(" - All telemetry disabled.")
 
