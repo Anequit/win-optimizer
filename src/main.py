@@ -78,10 +78,7 @@ telemetry_keys =[(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataC
                 (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack\Start", 4, winreg.REG_DWORD),
                 (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice\Start", 4, winreg.REG_DWORD),
                 (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagsvc\Start", 4, winreg.REG_DWORD),
-                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DPS\Start", 4, winreg.REG_DWORD),
-                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service\Start", 4, winreg.REG_DWORD),
-                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdiServiceHost\Start", 4, winreg.REG_DWORD),
-                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdiSystemHost\Start", 4, winreg.REG_DWORD)]
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service\Start", 4, winreg.REG_DWORD)]
 
 def run(commands: list):
     for command in commands:
