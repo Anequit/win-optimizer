@@ -150,7 +150,11 @@ def optimize_windows() -> None:
         "powercfg /setdcvalueindex 010fd358-aaf5-4687-a504-26218b58eab8 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 258",
         "powercfg /setacvalueindex 010fd358-aaf5-4687-a504-26218b58eab8 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da 708",
         "powercfg /setdcvalueindex 010fd358-aaf5-4687-a504-26218b58eab8 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da 384",
-        "powercfg /s 010fd358-aaf5-4687-a504-26218b58eab8"])
+        "powercfg /s 010fd358-aaf5-4687-a504-26218b58eab8",
+        "bcdedit /set disabledynamictick yes",
+        "bcdedit /set useplatformclock no",
+        "bcdedit /set useplatformtick yes",
+        "Disable-MMAgent -MemoryCompression"])
     
     print(" - Windows is now optimized.")
 
