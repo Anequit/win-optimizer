@@ -71,6 +71,17 @@ cleanup_keys = [(r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\
                 (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Defender\StateFlags0000", 2, winreg.REG_DWORD),
                 (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Error Reporting Files\StateFlags0000", 2, winreg.REG_DWORD)]
 
+telemetry_keys =[(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection\AllowTelemetry", 0, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC\PreventHandwritingDataSharing", 1, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched\NonBestEffortLimit", 0, winreg.REG_DWORD),
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack\Start", 4, winreg.REG_DWORD)
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice\Start", 4, winreg.REG_DWORD)
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagsvc\Start", 4, winreg.REG_DWORD)
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DPS\Start", 4, winreg.REG_DWORD)
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service\Start", 4, winreg.REG_DWORD)
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdiServiceHost\Start", 4, winreg.REG_DWORD)
+                (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdiSystemHost\Start", 4, winreg.REG_DWORD)]
+
 def run(commands: list):
     for command in commands:
         try:
