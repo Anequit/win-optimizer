@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 import winreg
+import shutil
 
 registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV\Start", 4, winreg.REG_DWORD),
                  (r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt\Start", 4, winreg.REG_DWORD),
@@ -196,6 +197,20 @@ def clean_system_junk() -> None:
         write_value_to_registry_key(item[0], item[1], item[2])
     
     run([r"cleanmgr.exe /sagerun"])
+    
+    temp = os.getenv('temp')
+    
+    for file in os.listdir(temp):
+        try:
+            filepath = os.path.join(temp, file)
+            
+            if os.path.isfile(filepath) or os.path.islink(filepath):
+                os.remove(filepath)
+                
+            elif os.path.isdir(filepath):
+                shutil.rmtree(filepath)
+        except:
+            continue
     
     print(" - System junk has been removed.")
 
