@@ -233,7 +233,7 @@ def main() -> None:
 | 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
 | 5: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
 | 6: System Cleanup\t\t| Removes junk files \t\t\t\t |
-| 7: Repair Files\t\t| Checks and repairs corrupted system files\t |
+| 7: Repair Corrupt Files\t| Checks and repairs corrupted system files\t |
 | 8: All of the above\t\t| Chooses all options \t\t\t\t |
 ----------------------------------------------------------------------------------
 """
