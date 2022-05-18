@@ -169,6 +169,7 @@ def optimize_windows() -> None:
         "powercfg /setacvalueindex 010fd358-aaf5-4687-a504-26218b58eab8 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da 708",
         "powercfg /setdcvalueindex 010fd358-aaf5-4687-a504-26218b58eab8 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da 384",
         "powercfg /s 010fd358-aaf5-4687-a504-26218b58eab8",
+        "powercfg /hibernate off",
         "Disable-MMAgent -MemoryCompression"])
     
     print(" - Windows is now optimized.")
