@@ -271,7 +271,7 @@ def main() -> None:
             repair_corruption()
             
         if input("\nWould you like to restart to apply changes (yes/no)? ") == "yes":
-            run([r"shutdown.exe /r /t 5"])
+            run([r"shutdown.exe /r /t 3"])
         
 if __name__ == "__main__":
     if ctypes.windll.shell32.IsUserAnAdmin() == False:
