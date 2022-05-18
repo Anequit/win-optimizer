@@ -233,7 +233,8 @@ def main() -> None:
 | 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
 | 5: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
 | 6: System Cleanup\t\t| Removes junk files \t\t\t\t |
-| 7: All of the above\t\t| Chooses all options \t\t\t\t |
+| 7: Repair Files\t\t| Checks and repairs corrupted system files\t |
+| 8: All of the above\t\t| Chooses all options \t\t\t\t |
 ----------------------------------------------------------------------------------
 """
     
@@ -241,7 +242,7 @@ def main() -> None:
         os.system("cls")
         print(menu)
         
-        user_input = input("What would you like to do? [1-7]: ")
+        user_input = input("What would you like to do? [1-8]: ")
         print()
         
         if user_input.isdigit() == True:
@@ -259,13 +260,15 @@ def main() -> None:
         elif user_input == 4: disable_autoupdates()
         elif user_input == 5: activate_win_pro()
         elif user_input == 6: clean_system_junk()
-        elif user_input == 7:
+        elif user_input == 7: repair_corruption()
+        elif user_input == 8:
             optimize_windows()
             optimize_network()
             disable_telemetry()
             disable_autoupdates()
             activate_win_pro()
             clean_system_junk()
+            repair_corruption()
             
         if input("\nWould you like to restart to apply changes (yes/no)? ") == "yes":
             run([r"shutdown.exe /r /t 5"])
