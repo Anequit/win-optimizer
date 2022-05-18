@@ -218,6 +218,11 @@ def clean_system_junk() -> None:
     
     print(" - System junk has been removed.")
 
+def repair_corruption() -> None:
+    run(["sfc /scannow"])
+    
+    print(" - Corrupted files have been repaired.")
+
 def main() -> None:
     menu = """
  Options\t\t\t  Descriptions
