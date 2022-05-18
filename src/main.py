@@ -93,8 +93,8 @@ def run(commands: list):
     for command in commands:
         try:
             subprocess.check_output(["powershell.exe", command], stderr=None)
-        except:
-            return
+        except: 
+            continue
 
 def parse_registry_path(fullpath: str) -> tuple[winreg.HKEYType, str, str]:
     root, split_path = fullpath.split('\\', 1)
