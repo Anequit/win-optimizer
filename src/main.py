@@ -55,6 +55,7 @@ registry_keys = [(r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstS
                  (r"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\GlobalUserDisabled", 1, winreg.REG_DWORD),
                  (r"HKEY_CURRENT_USER\System\GameConfigStore\GameDVR_Enabled", 0, winreg.REG_DWORD),
                  (r"HKEY_CURRENT_USER\System\GameConfigStore\GameDVR_FSEBehavior", 2, winreg.REG_DWORD),
+                 (r"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR\AppCaptureEnabled", 0, winreg.REG_DWORD)]
 
 cleanup_keys = [(r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders\StateFlags0000", 2, winreg.REG_DWORD),
                 (r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\BranchCache\StateFlags0000", 2, winreg.REG_DWORD),
