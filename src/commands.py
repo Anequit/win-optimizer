@@ -56,9 +56,9 @@ class commands:
 
     @staticmethod
     def activate_win_pro() -> None:
-        powershell.execute(r"slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
-                           r"slmgr.vbs /skms kms8.msguides.com",
-                           r"slmgr.vbs /ato")
+        powershell.execute("slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
+                           "slmgr.vbs /skms kms8.msguides.com",
+                           "slmgr.vbs /ato")
         
         print(" - Windows is now activated.")
 
@@ -78,7 +78,7 @@ class commands:
     def clean_system_junk() -> None:
         registry.write_keys(keys.cleanup_keys)
         
-        powershell.execute(r"cleanmgr.exe /sagerun")
+        powershell.execute(r"cleanmgr.exe /sagerun:0")
         
         temp = os.getenv('temp')
         

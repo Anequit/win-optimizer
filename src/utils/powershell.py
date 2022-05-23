@@ -6,7 +6,7 @@ def execute(*commands: str):
     
     for command in commands:
         try:
-            subprocess.run(f"powershell [void]({command})", shell=True)
+            subprocess.run(f"powershell {command}", stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         except: 
             continue
         

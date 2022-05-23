@@ -17,7 +17,7 @@ def print_commands() -> None:
 | 5: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
 | 6: System Cleanup\t\t| Removes junk files \t\t\t\t |
 | 7: Repair Corrupt Files\t| Checks and repairs corrupted system files \t |
-| 8: Undo Optimization\t\t| Restores registry back to original state \t |
+| 8: System Restore\t\t| Opens system restore menu \t\t\t |
 ----------------------------------------------------------------------------------
 
 [WARNING] Only options 1-4 are reversable, but there is an automatic system restore point created.
@@ -58,9 +58,9 @@ def main() -> None:
             registry.restore(backups[user_input - 1][0])
             continue
         
-        print(" - Backing up current registry.")
+        print(" - Creating restore point.")
 
-        backup_status = " - Successfully backed up registry." if registry.backup() else " - Failed to backup registry."
+        backup_status = " - Successfully created restore point." if registry.backup() else " - Failed to create restore point."
         
         print(backup_status)
         
