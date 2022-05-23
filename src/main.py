@@ -17,7 +17,8 @@ def print_commands() -> None:
 | 5: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
 | 6: System Cleanup\t\t| Removes junk files \t\t\t\t |
 | 7: Repair Corrupt Files\t| Checks and repairs corrupted system files \t |
-| 8: System Restore\t\t| Opens system restore menu \t\t\t |
+| 8: All of the above\t\t| Chooses all options \t\t\t\t |
+| 9: System Restore\t\t| Opens system restore menu \t\t\t |
 ----------------------------------------------------------------------------------
 
 [WARNING] Only options 1-4 are reversable, but there is an automatic system restore point created.
@@ -28,13 +29,13 @@ def main() -> None:
         os.system("cls")
         print_commands()
         
-        user_input = parser.parse_user_input(input("What would you like to do? [1-8]: "))
+        user_input = parser.parse_user_input(input("What would you like to do? [1-9]: "))
         print()
         
         if user_input == -1:
             continue
         
-        elif user_input == 8:
+        elif user_input == 9:
             commands.restore()
             continue
         
@@ -63,6 +64,15 @@ def main() -> None:
             commands.clean_system_junk()
             
         elif user_input == 7: 
+            commands.repair_corruption()
+        
+        elif user_input == 8:
+            commands.optimize_windows() 
+            commands.optimize_network()
+            commands.disable_telemetry()
+            commands.disable_autoupdates()
+            commands.activate_win_pro()
+            commands.clean_system_junk()
             commands.repair_corruption()
             
         else:
