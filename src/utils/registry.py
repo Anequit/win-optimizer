@@ -57,8 +57,16 @@ def backup() -> bool:
     
     return True
 
-def get_backups() -> list[str]:
-    return os.listdir(APPDATA_PATH)
+def get_backups() -> list[tuple[str, str]]:
+    backups = []
+    
+    for backup in os.listdir(APPDATA_PATH):
+        with open(os.path.join(APPDATA_PATH, backup, "metadata"), 'r') as metadata:
+            backups += [(backup, metadata.readline())]
+    
+    backups.reverse()
+    
+    return backups
     
 def restore(backup_path: str) -> None:
     backup_path = os.path.join(APPDATA_PATH, backup_path)
