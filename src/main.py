@@ -21,7 +21,7 @@ def print_commands() -> None:
 | 9: System Restore\t\t| Opens system restore menu \t\t\t |
 ----------------------------------------------------------------------------------
 
-[WARNING] Only options 1-4 are reversable, but there is an automatic system restore point created.
+[INFO] Options 1-4 are reversable, so there is an automatic system restore point created.
 """)
 
 def main() -> None:
