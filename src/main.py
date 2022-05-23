@@ -23,7 +23,6 @@ def print_commands() -> None:
 [WARNING] Only options 1-4 are reversable, but there is an automatic system restore point created.
 """)
 
-def print_backups() -> None:
     print("Bruh")
 
 def main() -> None:
