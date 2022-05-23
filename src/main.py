@@ -23,17 +23,6 @@ def print_commands() -> None:
 [WARNING] Only options 1-4 are reversable, but there is an automatic system restore point created.
 """)
 
-def print_backups(backups: list[tuple[str, str]]) -> None:
-    print("-----------------------------------")
-    
-    for backup in range(len(backups)):
-        if backup == 0:
-            print(f"| {backup + 1}: {backups[backup][1]} [LATEST] |")
-        
-        else:
-            print(f"| {backup + 1}: {backups[backup][1]} \t  |")
-            
-    print("-----------------------------------")
 def main() -> None:
     while(True):
         os.system("cls")
@@ -46,16 +35,7 @@ def main() -> None:
             continue
         
         elif user_input == 8:
-            backups = registry.get_backups()
-            
-            print_backups(backups)
-            
-            user_input = parser.parse_user_input(input(f"What would you like to do? [1-{len(backups)}]: "))
-            
-            if user_input > len(backups):
-                continue
-            
-            registry.restore(backups[user_input - 1][0])
+            commands.restore()
             continue
         
         print(" - Creating restore point.")

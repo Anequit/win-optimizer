@@ -103,10 +103,5 @@ class commands:
         print(" - Corrupted files have been repaired.")
 
     @staticmethod
-    def restore_registry(backup_path: str) -> None:
-        registry.delete_keys(keys.optimization_keys)
-        registry.delete_keys(keys.autoupdate_keys)
-        registry.delete_keys(keys.telemetry_keys)
-        registry.delete_keys(keys.cleanup_keys)
-        
-        registry.restore(backup_path)
+    def restore() -> None:
+        registry.restore()

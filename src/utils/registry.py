@@ -37,43 +37,14 @@ def delete_key(fullpath: str) -> None:
         return
         
 def backup() -> bool:
-    if os.path.exists(APPDATA_PATH) == False:
-        os.mkdir(APPDATA_PATH)
-    
-    backup_time = datetime.datetime.now()
-    backup_path = os.path.join(APPDATA_PATH, str(uuid.uuid4()))
-    
-    os.mkdir(backup_path)
-    
     try:
-        for key in keys.backup_keys:
-            keyname = key.split('\\')[-1]
-            
-            powershell.execute(f"reg export '{key}' '{backup_path}\{keyname}.reg'")
-            
-        with open(os.path.join(backup_path, "metadata"), 'w') as metadata:
-            metadata.write(backup_time.strftime(f"%d/%m/%Y %H:%M:%S"))
+        powershell.execute("Enable-ComputerRestore -Drive 'C:\'",
+                           "Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
+        
     except:
         return False
             
     return True
 
-def get_backups() -> list[tuple[str, str]]:
-    backups = []
-    
-    for backup in os.listdir(APPDATA_PATH):
-        with open(os.path.join(APPDATA_PATH, backup, "metadata"), 'r') as metadata:
-            backups += [(backup, metadata.readline())]
-    
-    backups.reverse()
-    
-    return backups
-    
-def restore(backup_path: str) -> None:
-    backup_path = os.path.join(APPDATA_PATH, backup_path)
-    
-    for key in keys.backup_keys:
-        keyname = key.split('\\')[-1]
-        
-        print(f"reg import '{key}' '{backup_path}\{keyname}.reg'")
-        powershell.execute(f"reg import '{key}' '{backup_path}\{keyname}.reg'")
+def restore() -> None:
+    powershell.execute("Rstrui.exe")

@@ -87,12 +87,3 @@ autoupdate_keys = [(r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Win
                    (r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore\AutoDownload", 2, winreg.REG_DWORD),
                    (r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\SetAutoRestartNotificationDisable", 1, winreg.REG_DWORD),
                    (r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps\AutoDownloadAndUpdateMapData", 0, winreg.REG_DWORD)]
-
-backup_keys = [r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services",
-               r"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control",
-               r"HKEY_CURRENT_USER\Control Panel",
-               r"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion",
-               r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile",
-               r"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows",
-               r"HKEY_CURRENT_USER\System\GameConfigStore",
-               r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer"]
