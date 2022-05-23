@@ -4,6 +4,7 @@ import datetime
 import uuid
 import utils.parser as parser
 import utils.powershell as powershell
+import keys
         
 APPDATA_PATH = os.path.join(os.getenv("APPDATA"), "win-optimizer")
 
@@ -40,21 +41,21 @@ def backup() -> bool:
         os.mkdir(APPDATA_PATH)
     
     backup_time = datetime.datetime.now()
-    backup_path = os.path.join(APPDATA_PATH, f"{uuid.uuid4()}")
+    backup_path = os.path.join(APPDATA_PATH, str(uuid.uuid4()))
     
     os.mkdir(backup_path)
     
     try:
-        powershell.execute(f"reg export HKLM {backup_path}/HKLM.reg",
-                            f"reg export HKCU {backup_path}/HKCU.reg")
-        
-        with open(os.path.join(backup_path, "data"), 'w') as backup_data:
-            backup_data.write(backup_time.strftime(f"%d-%m-%Y %H:%M:%S"))
-            backup_data.close()
+        for key in keys.backup_keys:
+            keyname = key.split('\\')[-1]
             
+            powershell.execute(f"reg export '{key}' '{backup_path}\{keyname}.reg'")
+            
+        with open(os.path.join(backup_path, "metadata"), 'w') as metadata:
+            metadata.write(backup_time.strftime(f"%d/%m/%Y %H:%M:%S"))
     except:
         return False
-    
+            
     return True
 
 def get_backups() -> list[tuple[str, str]]:
@@ -71,5 +72,8 @@ def get_backups() -> list[tuple[str, str]]:
 def restore(backup_path: str) -> None:
     backup_path = os.path.join(APPDATA_PATH, backup_path)
     
-    powershell.execute(f"reg import {backup_path}/HKLM.reg",
-                        f"reg import {backup_path}/HKCU.reg")
+    for key in keys.backup_keys:
+        keyname = key.split('\\')[-1]
+        
+        print(f"reg import '{key}' '{backup_path}\{keyname}.reg'")
+        powershell.execute(f"reg import '{key}' '{backup_path}\{keyname}.reg'")
