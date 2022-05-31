@@ -86,7 +86,7 @@ if __name__ == "__main__":
         print("I must be ran as administrator or I can't apply changes.")
         
         if input("Restart as admin (yes/no)? ") == "yes":
-            powershell.execute(r"Start-Process '.\WinOptimizer.exe' -Verb runAs")
+            powershell.execute(rf"Start-Process '{sys.argv[0]}' -Verb runAs")
             
         sys.exit()
         
