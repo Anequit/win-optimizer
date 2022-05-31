@@ -35,8 +35,8 @@ def delete_key(fullpath: str) -> None:
         
 def backup() -> bool:
     try:
-        powershell.execute("Enable-ComputerRestore -Drive 'C:\'",
-                           "Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
+        powershell.execute_commands("Enable-ComputerRestore -Drive 'C:\'",
+                                    "Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
         
     except:
         return False
@@ -44,4 +44,4 @@ def backup() -> bool:
     return True
 
 def restore() -> None:
-    powershell.execute("Rstrui.exe")
+    powershell.execute_command("Rstrui.exe")
