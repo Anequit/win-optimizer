@@ -86,7 +86,7 @@ class commands:
 
     @staticmethod
     def clean_system_junk() -> None:
-        print(" - Removing system junk...")
+        print(" - Running Disk Cleanup...")
         
         registry.write_keys(keys.cleanup_keys)
         
@@ -105,8 +105,6 @@ class commands:
                     shutil.rmtree(filepath)
             except:
                 continue
-        
-        print(" - System junk has been removed.")
 
     @staticmethod
     def repair_corruption() -> None:
