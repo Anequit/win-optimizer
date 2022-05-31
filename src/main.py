@@ -86,7 +86,7 @@ if __name__ == "__main__":
         print("I must be ran as administrator or I can't apply changes.")
         
         if input("Restart as admin (yes/no)? ") == "yes":
-            powershell.execute(rf"Start-Process '{sys.argv[0]}' -Verb runAs")
+            powershell.execute_command(rf"Start-Process '{sys.argv[0]}' -Verb runAs")
             
         sys.exit()
         
