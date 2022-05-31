@@ -36,6 +36,8 @@ class commands:
 
     @staticmethod
     def optimize_windows() -> None:
+        print(" - Optimizing Windows...")
+        
         registry.write_keys(keys.optimization_keys)
         
         powershell.execute_commands("powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e",
@@ -58,6 +60,8 @@ class commands:
 
     @staticmethod
     def activate_win_pro() -> None:
+        print(" - Activing Windows...")
+        
         powershell.execute_commands("slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
                                     "slmgr.vbs /skms kms8.msguides.com",
                                     "slmgr.vbs /ato")
@@ -66,18 +70,24 @@ class commands:
 
     @staticmethod
     def disable_telemetry() -> None:
+        print(" - Disabling telemetry...")
+        
         registry.write_keys(keys.telemetry_keys)
         
         print(" - All telemetry disabled.")
 
     @staticmethod
     def disable_autoupdates() -> None:
+        print(" - Disabling auto updates...")
+        
         registry.write_keys(keys.autoupdate_keys)
         
         print(" - Auto updates disabled.")
 
     @staticmethod
     def clean_system_junk() -> None:
+        print(" - Removing system junk...")
+        
         registry.write_keys(keys.cleanup_keys)
         
         powershell.execute_command(r"cleanmgr.exe /sagerun:0")
@@ -100,6 +110,8 @@ class commands:
 
     @staticmethod
     def repair_corruption() -> None:
+        print(" - Scanning for corrupted files...")
+        
         powershell.execute_command("sfc /scannow")
         
         print(" - Corrupted files have been repaired.")
