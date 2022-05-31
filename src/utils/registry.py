@@ -1,10 +1,7 @@
 import winreg
 import os
-import datetime
-import uuid
 import utils.parser as parser
 import utils.powershell as powershell
-import keys
         
 APPDATA_PATH = os.path.join(os.getenv("APPDATA"), "win-optimizer")
 
