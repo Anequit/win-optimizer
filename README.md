@@ -28,7 +28,9 @@ Due to how this program writes changes to Windows it's flagged as a virus. If th
 6. You should now see your brand new binary waiting for you to run it!
 
 ## Windows activation isn't working
-Steps to resolve this problem are located in this [issue](https://github.com/Anequit/win-optimizer/issues/10), I am still investigating it and may release a patch fixing it in the future.
+1. Run `Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T` as admin in either CMD or Powershell
+2. Wait for until it finishes restarting
+3. Retry activating
 
 ## What is file integrity?
 File integrity allows you to verify that the file you downloaded is identical the one uploaded. In the release, there will be a couple hashes you can use to verify the integrity of the binary. 
