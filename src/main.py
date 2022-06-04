@@ -6,23 +6,25 @@ import utils.parser as parser
 import utils.powershell as powershell
 from commands import commands
 
-def print_commands() -> None:
-    print("""
- Options\t\t\t  Descriptions
-----------------------------------------------------------------------------------
-| 1: Optimize Windows\t\t| General performance and gaming optimizations \t |
-| 2: Optimize Network\t\t| Wi-Fi and Ethernet optimizations \t\t |
-| 3: Disable Telemetry\t\t| Disables telemetry data collection \t\t |
-| 4: Disable Auto Updates\t| Makes all updates manual \t\t\t |
-| 5: Activate Windows 10/11 Pro\t| Activates Windows Pro edition for free \t |
-| 6: System Cleanup\t\t| Removes junk files \t\t\t\t |
-| 7: Repair Corrupt Files\t| Checks and repairs corrupted system files \t |
-| 8: All of the above\t\t| Chooses all options \t\t\t\t |
-| 9: System Restore\t\t| Opens system restore menu \t\t\t |
-----------------------------------------------------------------------------------
+menu_options = [["1:", "Optimize Windows", "General performance and gaming optimizations"],
+                ["2:", "Optimize Network", "Wi-Fi and Ethernet optimizations"],
+                ["3:", "Disable Telemetry", "Disables telemetry data collection"],
+                ["4:", "Disable Auto Updates", "Makes all updates manual"],
+                ["5:", "Activate Windows Pro", "Activates Windows Pro edition for free"],
+                ["6:", "System Cleanup", "Removes junk files"],
+                ["7:", "Repair Corrupt Files", "Checks and repairs corrupted system files"],
+                ["8:", "All of the above", "Chooses all options"],
+                ["9:", "System Restore", "Opens system restore menu"]]
 
-[INFO] An automatic system restore point is created everytime, but only options 1-4 are reversable.
-""")
+def print_commands() -> None:
+    print(" Options".ljust(33), "Descriptions")
+    print('-' * 82)
+    
+    for option in menu_options:
+        print(f"| {option[0]} {option[1].ljust(26)} | {option[2].ljust(46)} |")
+        
+    print('-' * 82)
+    print("\n[INFO] An automatic system restore point is created everytime, but only options 1-4 are reversable.\n")
 
 def main() -> None:
     while(True):
