@@ -60,7 +60,7 @@ class commands:
 
     @staticmethod
     def activate_win_pro() -> None:
-        print(" - Activing Windows...")
+        print(" - Activating Windows...")
         
         powershell.execute_commands("slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
                                     "slmgr.vbs /skms kms8.msguides.com",
