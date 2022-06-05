@@ -1,19 +1,16 @@
-import utils.powershell as powershell
-import utils.registry as registry
 import keys
 import os
 import shutil
+from utils.powershell import Powershell
+from utils.registry import Registry
 
-class commands:
-    @staticmethod
-    def get_command_count() -> int:
-        return len([method for method in dir(commands) if method.startswith('__') == False]) - 1
-    
+
+class Options:
     @staticmethod
     def optimize_network() -> None:
         print(" - Optimizing Network...")
-        
-        powershell.execute_commands("Set-NetTCPSetting -SettingName internet -AutoTuningLevelLocal normal",
+
+        Powershell.execute_commands("Set-NetTCPSetting -SettingName internet -AutoTuningLevelLocal normal",
                                     "Set-NetTCPSetting -SettingName internet -ScalingHeuristics disabled",
                                     "netsh int tcp set supplemental internet congestionprovider=CUBIC",
                                     "Set-NetOffloadGlobalSetting -ReceiveSegmentCoalescing disabled",
@@ -31,16 +28,16 @@ class commands:
                                     "netsh interface ipv6 set subinterface \"Ethernet\" mtu=1500 store=persistent",
                                     "netsh interface ipv4 set subinterface \"Wi-Fi\" mtu=1500 store=persistent",
                                     "netsh interface ipv6 set subinterface \"Wi-Fi\" mtu=1500 store=persistent")
-        
+
         print(" - Network is now optimized.")
 
     @staticmethod
     def optimize_windows() -> None:
         print(" - Optimizing Windows...")
-        
-        registry.write_keys(keys.optimization_keys)
-        
-        powershell.execute_commands("powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e",
+
+        Registry.write_keys(keys.optimization_keys)
+
+        Powershell.execute_commands("powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e",
                                     "powercfg /d 010fd358-aaf5-4687-a504-26218b58eab8",
                                     "powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 010fd358-aaf5-4687-a504-26218b58eab8",
                                     "powercfg /changename 010fd358-aaf5-4687-a504-26218b58eab8 'Optimized Ultimate Performance'",
@@ -55,52 +52,52 @@ class commands:
                                     "Disable-MMAgent -MemoryCompression",
                                     "bcdedit /set disabledynamictick yes",
                                     "bcdedit /set useplatformclock no")
-        
+
         print(" - Windows is now optimized.")
 
     @staticmethod
     def activate_win_pro() -> None:
         print(" - Activating Windows...")
-        
-        powershell.execute_commands("slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
+
+        Powershell.execute_commands("slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX",
                                     "slmgr.vbs /skms kms8.msguides.com",
                                     "slmgr.vbs /ato")
-        
+
         print(" - Windows is now activated.")
 
     @staticmethod
     def disable_telemetry() -> None:
         print(" - Disabling telemetry...")
-        
-        registry.write_keys(keys.telemetry_keys)
-        
+
+        Registry.write_keys(keys.telemetry_keys)
+
         print(" - All telemetry disabled.")
 
     @staticmethod
     def disable_autoupdates() -> None:
         print(" - Disabling auto updates...")
-        
-        registry.write_keys(keys.autoupdate_keys)
-        
+
+        Registry.write_keys(keys.autoupdate_keys)
+
         print(" - Auto updates disabled.")
 
     @staticmethod
     def clean_system_junk() -> None:
         print(" - Running Disk Cleanup...")
-        
-        registry.write_keys(keys.cleanup_keys)
-        
-        powershell.execute_command(r"cleanmgr.exe /sagerun:0")
-        
+
+        Registry.write_keys(keys.cleanup_keys)
+
+        Powershell.execute_command(r"cleanmgr.exe /sagerun:0")
+
         temp = os.getenv('temp')
-        
+
         for file in os.listdir(temp):
             try:
                 filepath = os.path.join(temp, file)
-                
+
                 if os.path.isfile(filepath) or os.path.islink(filepath):
                     os.remove(filepath)
-                    
+
                 elif os.path.isdir(filepath):
                     shutil.rmtree(filepath)
             except:
@@ -109,11 +106,19 @@ class commands:
     @staticmethod
     def repair_corruption() -> None:
         print(" - Scanning for corrupted files...")
-        
-        powershell.execute_command("sfc /scannow")
-        
+
+        Powershell.execute_command("sfc /scannow")
+
         print(" - Corrupted files have been repaired.")
 
     @staticmethod
+    def backup() -> None:
+        print(" - Creating restore point...")
+
+        Registry.backup()
+
+        print(" - Restore point created.")
+
+    @staticmethod
     def restore() -> None:
-        registry.restore()
+        Registry.restore()
