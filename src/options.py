@@ -1,8 +1,8 @@
-import keys
 import os
 import shutil
 from utils.powershell import Powershell
 from utils.registry import Registry
+from keys import Keys
 
 
 class Options:
@@ -35,7 +35,7 @@ class Options:
     def optimize_windows() -> None:
         print(" - Optimizing Windows...")
 
-        Registry.write_keys(keys.optimization_keys)
+        Registry.write_keys(Keys.optimization_keys)
 
         Powershell.execute_commands("powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e",
                                     "powercfg /d 010fd358-aaf5-4687-a504-26218b58eab8",
@@ -69,7 +69,7 @@ class Options:
     def disable_telemetry() -> None:
         print(" - Disabling telemetry...")
 
-        Registry.write_keys(keys.telemetry_keys)
+        Registry.write_keys(Keys.telemetry_keys)
 
         print(" - All telemetry disabled.")
 
@@ -77,7 +77,7 @@ class Options:
     def disable_autoupdates() -> None:
         print(" - Disabling auto updates...")
 
-        Registry.write_keys(keys.autoupdate_keys)
+        Registry.write_keys(Keys.autoupdate_keys)
 
         print(" - Auto updates disabled.")
 
@@ -85,7 +85,7 @@ class Options:
     def clean_system_junk() -> None:
         print(" - Running Disk Cleanup...")
 
-        Registry.write_keys(keys.cleanup_keys)
+        Registry.write_keys(Keys.cleanup_keys)
 
         Powershell.execute_command(r"cleanmgr.exe /sagerun:0")
 
