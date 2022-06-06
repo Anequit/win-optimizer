@@ -4,6 +4,8 @@ import sys
 from options import Options
 from utils.powershell import Powershell
 from utils.parser import Parser
+from keys import Keys
+
 
 menu_options = [["Optimize Windows", "General performance and gaming optimizations"],
                 ["Optimize Network", "Wi-Fi and Ethernet optimizations"],
@@ -26,6 +28,8 @@ def print_options() -> None:
     print("\n[INFO] An automatic system restore point is created everytime, but only options 1-4 are reversable.\n")
 
 def main() -> None:
+    Keys.load_keys()
+    
     while(True):
         os.system("cls")
         print_options()
