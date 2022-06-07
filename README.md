@@ -33,7 +33,7 @@ Due to how this program writes changes to Windows it's flagged as a virus. If th
 3. Retry activating
 
 ## What is file integrity?
-File integrity allows you to verify that the file you downloaded is identical the one uploaded. In the release, there will be a couple hashes you can use to verify the integrity of the binary. 
+File integrity allows you to verify that the file you downloaded is identical the one uploaded. In the release, there will be a hash you can use to verify the integrity of the binary. 
 
 1. Start by downloading the latest version [here](https://github.com/Anequit/win-optimizer/releases/latest), then copy and save the SHA256 hash.
 
