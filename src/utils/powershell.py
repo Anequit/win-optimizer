@@ -13,7 +13,7 @@ class Powershell:
             print("  - Failed to run: " + command)
 
     @staticmethod
-    def execute_commands(*commands: str) -> None:
+    def execute_commands(commands: list) -> None:
         if commands is None:
             raise ValueError("commands can't be empty")
 

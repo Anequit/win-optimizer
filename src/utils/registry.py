@@ -38,8 +38,8 @@ class Registry:
 
     @staticmethod
     def backup() -> None:
-        Powershell.execute_commands("Enable-ComputerRestore -Drive 'C:\'",
-                                    "Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
+        Powershell.execute_command("Enable-ComputerRestore -Drive 'C:\'")
+        Powershell.execute_command("Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
 
     @staticmethod
     def restore() -> None:
