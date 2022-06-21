@@ -1,4 +1,4 @@
-pyinstaller --noconfirm --clean -D -F -i ./src/Assets/ICON.ico -n "WinOptimizer" ./src/main.py
+pyinstaller --noconfirm --clean -D -F -i ./src/CLI/Assets/ICON.ico -n "WinOptimizer" ./src/CLI/main.py
 
 Remove-Item -R -Force ".\build"
 Remove-Item -Force "WinOptimizer.spec"
