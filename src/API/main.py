@@ -1,5 +1,5 @@
 from flask import Flask
-import src.API.settings as settings
+import settings as settings
 
 
 app = Flask(__name__)
