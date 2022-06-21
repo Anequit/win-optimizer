@@ -1,8 +1,12 @@
-from flask import Flask
+from flask import Flask, redirect
 import settings as settings
 
 
 app = Flask(__name__)
+
+@app.route("/")
+def root():
+    return redirect("https://github.com/Anequit/win-optimizer")
 
 @app.route("/optimization")
 def optimization():
