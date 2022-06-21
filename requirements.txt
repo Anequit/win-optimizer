@@ -9,3 +9,9 @@ Jinja2==3.1.2
 MarkupSafe==2.1.1
 uvicorn==0.17.6
 Werkzeug==2.1.2
+altgraph==0.17.2
+future==0.18.2
+pefile==2021.9.3
+pyinstaller==4.10
+pyinstaller-hooks-contrib==2022.3
+pywin32-ctypes==0.2.0
