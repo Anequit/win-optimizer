@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import settings as settings
+import src.API.settings as settings
 
 
 app = FastAPI()
