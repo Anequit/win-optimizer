@@ -1,32 +1,36 @@
-from fastapi import FastAPI
+from flask import Flask
 import src.API.settings as settings
 
-app = FastAPI()
 
-@app.get("/optimization")
+app = Flask(__name__)
+
+@app.route("/optimization")
 def optimization():
     return settings.optimization
 
-@app.get("/cleanup")
+@app.route("/cleanup")
 def cleanup():
     return settings.cleanup
 
-@app.get("/telemetry")
+@app.route("/telemetry")
 def telemetry():
     return settings.telemetry
 
-@app.get("/autoupdate")
+@app.route("/autoupdate")
 def autoupdate():
     return settings.autoupdate
 
-@app.get("/powerplan")
+@app.route("/powerplan")
 def powerplan():
     return settings.powerplan
 
-@app.get("/activation")
+@app.route("/activation")
 def activation():
     return settings.activation
 
-@app.get("/network")
+@app.route("/network")
 def network():
     return settings.network
+
+if __name__ == "__main__":
+    app.run(debug=False)
