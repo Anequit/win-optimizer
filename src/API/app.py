@@ -1,40 +1,33 @@
-from flask import Flask, redirect
+from fastapi import FastAPI
 import settings as settings
 
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route("/")
-def root():
-    return redirect("https://github.com/Anequit/win-optimizer")
-
-@app.route("/optimization")
+@app.get("/optimization")
 def optimization():
     return settings.optimization
 
-@app.route("/cleanup")
+@app.get("/cleanup")
 def cleanup():
     return settings.cleanup
 
-@app.route("/telemetry")
+@app.get("/telemetry")
 def telemetry():
     return settings.telemetry
 
-@app.route("/autoupdate")
+@app.get("/autoupdate")
 def autoupdate():
     return settings.autoupdate
 
-@app.route("/powerplan")
+@app.get("/powerplan")
 def powerplan():
     return settings.powerplan
 
-@app.route("/activation")
+@app.get("/activation")
 def activation():
     return settings.activation
 
-@app.route("/network")
+@app.get("/network")
 def network():
     return settings.network
-
-if __name__ == "__main__":
-    app.run(debug=False)
