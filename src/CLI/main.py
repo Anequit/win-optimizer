@@ -12,7 +12,7 @@ menu_options = [["Optimize Windows", "General performance and gaming optimizatio
                 ["Disable Telemetry", "Disables telemetry data collection"],
                 ["Disable Auto Updates", "Makes all updates manual"],
                 ["Activate Windows Pro", "Activates Windows Pro edition for free"],
-                ["System Cleanup", "Removes junk files"],
+                ["Remove Junk files", "Clears temp folder"],
                 ["Repair Corrupt Files", "Checks and repairs corrupted system files"],
                 ["All of the above", "Chooses all options"],
                 ["System Restore", "Opens system restore menu"]]
