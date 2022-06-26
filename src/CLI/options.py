@@ -50,11 +50,7 @@ class Options:
 
     @staticmethod
     def clean_system_junk() -> None:
-        print(" - Running Disk Cleanup...")
-
-        Registry.write_keys(Settings.cleanup)
-
-        Powershell.execute_command(r"cleanmgr.exe /sagerun:0")
+        print(" - Removing junk files...")
 
         temp = os.getenv('temp')
 
@@ -69,6 +65,8 @@ class Options:
                     shutil.rmtree(filepath)
             except:
                 continue
+            
+        print(" - Removed junk files.")
 
     @staticmethod
     def repair_corruption() -> None:
