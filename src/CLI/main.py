@@ -22,7 +22,7 @@ def print_options() -> None:
     print('-' * 82)
     
     for option in range(len(menu_options)):
-        print(f"| {option + 1}: {menu_options[option][0].ljust(26)} | {menu_options[option][0].ljust(46)} |")
+        print(f"| {option + 1}: {menu_options[option][0].ljust(26)} | {menu_options[option][1].ljust(46)} |")
         
     print('-' * 82)
     print("\n[INFO] An automatic system restore point is created everytime, but only options 1-4 are reversable.\n")
