@@ -74,8 +74,10 @@ class Options:
     def repair_corruption() -> None:
         print(" - Scanning for corrupted files...")
 
-        Powershell.execute_commands(["DISM /Online /Cleanup-Image /RestoreHealth", 
-                                     "sfc /scannow"])
+        Powershell.execute_command("sfc /scannow")
+        Powershell.execute_command("dism /online /cleanup-image /StartComponentcleanup")
+        Powershell.execute_command("dism /online /cleanup-image /CheckHealth")
+        Powershell.execute_command("dism /online /cleanup-image /ScanHealth")
 
         print(" - Corrupted files have been repaired.")
 
