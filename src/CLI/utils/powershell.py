@@ -7,9 +7,9 @@ class Powershell:
         if command is None:
             raise ValueError("command can't be empty")
 
-        process = subprocess.call(["powershell", command], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+        process = subprocess.run(["powershell", command], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True, capture_output=False)
 
-        if process != 0:
+        if process.returncode != 0:
             print("  - Failed to run: " + command)
 
     @staticmethod
