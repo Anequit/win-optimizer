@@ -2,11 +2,13 @@ class Options:
     def __init__(self) -> None:
         self.general = self.general_optimizations()
         self.network = self.network_optimizations()
+        self.gaming = self.gaming_optimizations()
         self.activate = self.activation_commands()
         
     def __dict__(self) -> dict[str]:
         return dict(generalCommands=self.general,
-                    networkCommands=self.network, 
+                    networkCommands=self.network,
+                    gamingCommand=self.gaming,
                     activationCommands=self.activate)
     
     def general_optimizations(self):
