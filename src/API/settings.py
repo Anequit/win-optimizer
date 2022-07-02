@@ -6,10 +6,10 @@ class Settings:
         self.activate = self.activation_commands()
         
     def __dict__(self) -> dict[str]:
-        return dict(generalCommands=self.general,
-                    networkCommands=self.network,
-                    gamingCommand=self.gaming,
-                    activationCommands=self.activate)
+        return dict(generalOptimizations=self.general,
+                    networkOptimizations=self.network,
+                    gamingOptimizations=self.gaming,
+                    windowsActivation=self.activate)
     
     def general_optimizations(self):
         return dict(telemetry = [r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f',
