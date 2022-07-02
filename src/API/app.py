@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from src.API.settings import Settings
-from src.API.version import Version
+from requests import get
 
 
 app = FastAPI()
@@ -11,4 +11,4 @@ def settings():
 
 @app.get("/version")
 def version():
-    return Version.get_latest_version()
+    return get("https://api.github.com/repos/Anequit/win-optimizer/releases/latest").json()['tag_name']
