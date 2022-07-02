@@ -1,7 +1,7 @@
 from json import dumps
 from fastapi import FastAPI
-from settings import Settings
-from version import Version
+from src.API.settings import Settings
+from src.API.version import Version
 
 app = FastAPI()
 
