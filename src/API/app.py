@@ -1,13 +1,16 @@
 from fastapi import FastAPI
-from src.API.settings import Settings
+from src.API.settings import general_optimizations, network_optimizations, activation_commands
 from requests import get
 
 
 app = FastAPI()
+optimizations = dict(general=general_optimizations(),
+                     network=network_optimizations(),
+                     activate=activation_commands())
 
-@app.get("/settings")
+@app.get("/optimizations")
 def settings():
-    return Settings().__dict__()
+    return optimizations
 
 @app.get("/version")
 def version():
