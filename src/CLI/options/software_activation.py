@@ -1,9 +1,9 @@
-from utils.powershell import execute_commands
+from utils.command import execute_commands
 from os.path import isdir
 
 def activate_windows_pro() -> None:
     execute_commands([
-        r'Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T'
+        r'powershell Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T'
         r'slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX',
         r'slmgr.vbs /skms kms8.msguides.com',
         r'slmgr.vbs /ato'
