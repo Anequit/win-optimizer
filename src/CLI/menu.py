@@ -31,8 +31,18 @@ menu_options = [
         ["Backup", "Backs up registry", True, backup_registry]]]
     ]
 
+def display_title() -> None:
+    Console().print(r"""
+██╗    ██╗██╗███╗   ██╗       ██████╗ ██████╗ ████████╗██╗███╗   ███╗██╗███████╗███████╗██████╗ 
+██║    ██║██║████╗  ██║      ██╔═══██╗██╔══██╗╚══██╔══╝██║████╗ ████║██║╚══███╔╝██╔════╝██╔══██╗
+██║ █╗ ██║██║██╔██╗ ██║█████╗██║   ██║██████╔╝   ██║   ██║██╔████╔██║██║  ███╔╝ █████╗  ██████╔╝
+██║███╗██║██║██║╚██╗██║╚════╝██║   ██║██╔═══╝    ██║   ██║██║╚██╔╝██║██║ ███╔╝  ██╔══╝  ██╔══██╗
+╚███╔███╔╝██║██║ ╚████║      ╚██████╔╝██║        ██║   ██║██║ ╚═╝ ██║██║███████╗███████╗██║  ██║
+ ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝       ╚═════╝ ╚═╝        ╚═╝   ╚═╝╚═╝     ╚═╝╚═╝╚══════╝╚══════╝╚═╝  ╚═╝                                               
+          """, highlight=True, markup=True, justify="center")
+
 def display_sections() -> None:
-    table = Table(box=box.MINIMAL)
+    table = Table(box=box.MINIMAL, expand=True)
     
     table.padding = (0, 2, 0, 2)
     
@@ -44,10 +54,10 @@ def display_sections() -> None:
     
     table.add_row(f"{len(menu_options) + 1}: Quit", "Exit application")
     
-    Console().print(Panel(title="Home", title_align="left", renderable=table, padding=(0, 0), highlight=True, expand=False))
+    Console().print(Panel(title="Home", title_align="left", renderable=table, padding=(0, 0), highlight=True))
 
 def display_options(section: list) -> None:
-    table = Table(box=box.MINIMAL)
+    table = Table(box=box.MINIMAL, expand=True)
     
     table.padding = (0, 2, 0, 2)
     
@@ -68,7 +78,7 @@ def display_options(section: list) -> None:
     
     table.add_row(f"{len(section[2]) + 1}: Home", "Returns to home page")
     
-    Console().print(Panel(title=section[0], title_align="left", renderable=table, padding=(0, 0), highlight=True, expand=False))
+    Console().print(Panel(title=section[0], title_align="left", renderable=table, padding=(0, 0), highlight=True))
 
 def get_section_input() -> int:
     "Prompt user to enter a value"

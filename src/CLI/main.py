@@ -40,6 +40,8 @@ def main() -> None:
     while(True):
         clear_screen()
         
+        display_title()
+        
         display_sections()
         
         newline()
@@ -50,6 +52,8 @@ def main() -> None:
             break
         
         clear_screen()
+        
+        display_title()
         
         display_options(menu_options[section])
         
