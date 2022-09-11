@@ -26,8 +26,8 @@ menu_options = [
         ["Activate Windows", "Activates Windows Pro edition", "No", activate_windows_pro],
         ["Activate WinRAR", "Activates Windows Home edition", "No", activate_winrar]]],
     ["Registry", "Options for restoring or backing up registry", [
-        ["Restore", "Opens recovery control panel", "", restore_registry],
-        ["Backup", "Backs up registry", "", backup_registry]]]
+        ["Restore", "Opens recovery control panel", "No", restore_registry],
+        ["Backup", "Backs up registry", "Yes", backup_registry]]]
     ]
 
 def display_sections() -> None:
