@@ -1,8 +1,8 @@
-from utils import powershell
+from utils.powershell import execute_commands
 
 
 def disable_telemetry() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f',
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC /v PreventHandwritingDataSharing /t REG_DWORD /d 1 /f',
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack /v Start /t REG_DWORD /d 4 /f',
@@ -12,7 +12,7 @@ def disable_telemetry() -> None:
     ])
 
 def improve_startup() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV /v Start /t REG_DWORD /d 3 /f',
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt /v Start /t REG_DWORD /d 3 /f',
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc /v Start /t REG_DWORD /d 3 /f',
@@ -30,7 +30,7 @@ def improve_startup() -> None:
     ])
 
 def improve_responsiveness() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f',
         r'reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer /v DesktopProcess /t REG_DWORD /d 1 /f',
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction /v Enable /t REG_SZ /d Y /f',
@@ -60,7 +60,7 @@ def improve_responsiveness() -> None:
     ])
 
 def disable_autoupdate() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AutoInstallMinorUpdates /t REG_DWORD /d 0 /f',
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f',
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 2 /f',
@@ -69,7 +69,7 @@ def disable_autoupdate() -> None:
     ])
 
 def install_powerplan() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e',
         r'powercfg /d 010fd358-aaf5-4687-a504-26218b58eab8',
         r'powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 010fd358-aaf5-4687-a504-26218b58eab8',
