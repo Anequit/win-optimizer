@@ -85,22 +85,3 @@ def resolve_option(section: int, option: int) -> None:
 
 def clear_screen() -> None:
     os.system("cls")
-
-while(True):
-    clear_screen()
-    
-    display_sections()
-    section = get_section_input() - 1
-
-    if section + 1 > len(menu_options):
-        break
-    
-    clear_screen()
-    
-    display_options(menu_options[section])
-    option = get_option_input(section)
-
-    if option > len(menu_options[section][2]):
-        continue
-    
-    resolve_option(section, option)
