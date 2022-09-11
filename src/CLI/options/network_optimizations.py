@@ -1,8 +1,8 @@
-from utils import powershell
+from utils.powershell import execute_commands
 
 
 def update_dns() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'netsh interface ipv4 set dnsservers Wi-Fi static 8.8.8.8 primary',
         r'netsh interface ipv4 set dnsservers Wi-Fi static 1.1.1.1 primary',
         r'netsh interface ipv4 set dnsservers Ethernet static 8.8.8.8 primary',
@@ -14,7 +14,7 @@ def update_dns() -> None:
     ])
 
 def disable_services() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider /v LocalPriority /t REG_DWORD /d 4 /f',
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider /v HostsPriority /t REG_DWORD /d 5 /f',
         r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider /v DnsPriority /t REG_DWORD /d 6 /f',
@@ -27,7 +27,7 @@ def disable_services() -> None:
     ])
 
 def disable_throttling() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile /v NetworkThrottlingIndex /t REG_DWORD /d 4294967295 /f',
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched /v TimerResolution /t REG_DWORD /d 0 /f',
         r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched /v NonBestEffortLimit /t REG_DWORD /d 0 /f',
@@ -36,7 +36,7 @@ def disable_throttling() -> None:
     ])
 
 def configure_adapter() -> None:
-    powershell.execute_commands([
+    execute_commands([
         r'Set-NetTCPSetting -SettingName internet -AutoTuningLevelLocal normal',
         r'Set-NetTCPSetting -SettingName internet -ScalingHeuristics disabled',
         r'netsh int tcp set supplemental internet congestionprovider=CUBIC',
