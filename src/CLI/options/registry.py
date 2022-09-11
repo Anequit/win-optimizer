@@ -1,8 +1,8 @@
-from utils.powershell import execute_commands, execute_command
+from utils.command import execute_command
 
 def backup_registry() -> None:
-    execute_command("Enable-ComputerRestore -Drive 'C:\'")
-    execute_command("Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
+    execute_command("powershell Enable-ComputerRestore -Drive 'C:\'")
+    execute_command("powershell Checkpoint-Computer -Description win-optimizer -RestorePointType MODIFY_SETTINGS")
 
 def restore_registry() -> None:
     execute_command("Rstrui.exe")
