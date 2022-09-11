@@ -1,71 +1,71 @@
-from utils.powershell import execute_commands
+from utils.command import execute_commands
 
 
 def disable_telemetry() -> None:
     execute_commands([
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /t REG_DWORD /d 0 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC /v PreventHandwritingDataSharing /t REG_DWORD /d 1 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack /v Start /t REG_DWORD /d 4 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagsvc /v Start /t REG_DWORD /d 4 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service /v Start /t REG_DWORD /d 4 /f',
-        r'reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy /v TailoredExperiencesWithDiagnosticDataEnabled /t REG_DWORD /d 0 /f'
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC" /v PreventHandwritingDataSharing /t REG_DWORD /d 1 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack" /v Start /t REG_DWORD /d 4 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagsvc" /v Start /t REG_DWORD /d 4 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service" /v Start /t REG_DWORD /d 4 /f',
+        r'reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy" /v TailoredExperiencesWithDiagnosticDataEnabled /t REG_DWORD /d 0 /f'
     ])
 
 def improve_startup() -> None:
     execute_commands([
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PeerDistSvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SCPolicySvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMPTRAP /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PNRPsvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2psvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2pimsvc /v Start /t REG_DWORD /d 3 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain /v DelayedAutoStart /t REG_DWORD /d 1 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\"Session Manager"\Power /v HiberbootEnabled /t REG_DWORD /d 0 /f'
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertPropSvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PeerDistSvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SCPolicySvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMPTRAP" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PNRPsvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2psvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2pimsvc" /v Start /t REG_DWORD /d 3 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain" /v DelayedAutoStart /t REG_DWORD /d 1 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v HiberbootEnabled /t REG_DWORD /d 0 /f'
     ])
 
 def improve_responsiveness() -> None:
     execute_commands([
-        r'reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f',
-        r'reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer /v DesktopProcess /t REG_DWORD /d 1 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction /v Enable /t REG_SZ /d Y /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer /v "Max Cached Icons" /t REG_DWORD /d 2000 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile /v SystemResponsiveness /t REG_DWORD /d 0 /f',
+        r'reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v GlobalUserDisabled /t REG_DWORD /d 1 /f',
+        r'reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer" /v DesktopProcess /t REG_DWORD /d 1 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction" /v Enable /t REG_SZ /d Y /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "Max Cached Icons" /t REG_DWORD /d 2000 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 0 /f',
         r'bcdedit /set disabledynamictick yes',
         r'bcdedit /set useplatformclock no',
-        r'reg add HKEY_CURRENT_USER\"Control Panel"\Desktop /v HungAppTimeout /t REG_SZ /d 4000 /f',
-        r'reg add HKEY_CURRENT_USER\"Control Panel"\Desktop /v WaitToKillAppTimeout /t REG_SZ /d 5000 /f',
-        r'reg add HKEY_CURRENT_USER\"Control Panel"\Desktop /v MenuShowDelay /t REG_SZ /d 0 /f',
-        r'reg add HKEY_CURRENT_USER\"Control Panel"\Desktop /v ForegroundLockTimeout /t REG_DWORD /d 200000 /f',
-        r'reg add HKEY_CURRENT_USER\"Control Panel"\Desktop /v AutoEndTasks /t REG_SZ /d 1 /f',
-        r'reg add HKEY_CURRENT_USER\"Control Panel"\Mouse /v MouseHoverTime /t REG_SZ /d 100 /f',
-        r'reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR /v AppCaptureEnabled /t REG_DWORD /d 0 /f',
-        r'reg add HKEY_CURRENT_USER\System\GameConfigStore /v GameDVR_Enabled /t REG_DWORD /d 0 /f',
-        r'reg add HKEY_CURRENT_USER\System\GameConfigStore /v GameDVR_FSEBehavior /t REG_DWORD /d 2 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v Affinity /t REG_DWORD /d 0 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v "Background Only" /t REG_SZ /d False /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v "Clock Rate" /t REG_DWORD /d 10000 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v "GPU Priority" /t REG_DWORD /d 8 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v Priority /t REG_DWORD /d 6 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v "Scheduling Category" /t REG_SZ /d High /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"Windows NT"\CurrentVersion\Multimedia\SystemProfile\Tasks\Games /v "SFIO Priority" /t REG_SZ /d High /f',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling /v PowerThrottlingOff /t REG_DWORD /d 1 /f',
-        r'Disable-MMAgent -MemoryCompression',
-        r'reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\"Session Manager"\"Memory Management"\ /v LargeSystemCache /t REG_DWORD /d 1 /f'
+        r'reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d 4000 /f',
+        r'reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v WaitToKillAppTimeout /t REG_SZ /d 5000 /f',
+        r'reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v MenuShowDelay /t REG_SZ /d 0 /f',
+        r'reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v ForegroundLockTimeout /t REG_DWORD /d 200000 /f',
+        r'reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoEndTasks /t REG_SZ /d 1 /f',
+        r'reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v MouseHoverTime /t REG_SZ /d 100 /f',
+        r'reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v AppCaptureEnabled /t REG_DWORD /d 0 /f',
+        r'reg add "HKEY_CURRENT_USER\System\GameConfigStore" /v GameDVR_Enabled /t REG_DWORD /d 0 /f',
+        r'reg add "HKEY_CURRENT_USER\System\GameConfigStore" /v GameDVR_FSEBehavior /t REG_DWORD /d 2 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v Affinity /t REG_DWORD /d 0 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Background Only" /t REG_SZ /d "False" /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Clock Rate" /t REG_DWORD /d 10000 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /d 8 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v Priority /t REG_DWORD /d 6 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Scheduling Category" /t REG_SZ /d High /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "SFIO Priority" /t REG_SZ /d High /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v PowerThrottlingOff /t REG_DWORD /d 1 /f',
+        r'powershell Disable-MMAgent -MemoryCompression',
+        r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v LargeSystemCache /t REG_DWORD /d 1 /f'
     ])
 
 def disable_autoupdate() -> None:
     execute_commands([
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AutoInstallMinorUpdates /t REG_DWORD /d 0 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 2 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /v SetAutoRestartNotificationDisable /t REG_DWORD /d 1 /f',
-        r'reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps /v AutoDownloadAndUpdateMapData /t REG_DWORD /d 0 /f'
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AutoInstallMinorUpdates /t REG_DWORD /d 0 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore" /v AutoDownload /t REG_DWORD /d 2 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v SetAutoRestartNotificationDisable /t REG_DWORD /d 1 /f',
+        r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps" /v AutoDownloadAndUpdateMapData /t REG_DWORD /d 0 /f'
     ])
 
 def install_powerplan() -> None:
