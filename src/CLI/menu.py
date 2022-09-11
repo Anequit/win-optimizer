@@ -7,24 +7,28 @@ from os import system
 
 from options.general_optimizations import *
 from options.network_optimizations import *
-from options.windows_activation import *
+from options.software_activation import *
+from options.registry import *
 
-
-menu_options = [["General Optimizations", "General performance and gaming optimizations", [
-                 ["Telemetry", "Disables Windows telemetry", "Yes", disable_telemetry],
-                 ["Services", "Disables unnecessary services that slow down startup", "Yes", improve_startup],
-                 ["Responsiveness", "Improve system responsiveness", "Yes", improve_responsiveness],
-                 ["Auto Update", "Disabled Windows auto update", "Yes", disable_autoupdate],
-                 ["Powerplan", "Installs optimized ultimate powerplan", "Yes", install_powerplan]]],
-                ["Network Optimizations", "Wi-Fi and Ethernet optimizations", [
-                 ["DNS", "Set DNS to Cloudflare and Google DNS servers", "No", update_dns],
-                 ["Services", "Configure network services", "No", disable_services],
-                 ["Throttling", "Disable network throttling", "No", disable_throttling],
-                 ["Adapter", "Configure network adapter", "No", configure_adapter]]],
-                ["Windows Activation", "Windows key reset and activation", [
-                 ["Reset Key", "Switches to Windows generic key", "No", reset_windows_key],
-                 ["Windows Pro", "Activates Windows Pro edition", "No", activate_windows_pro],
-                 ["Windows Home", "Activates Windows Home edition", "No", activate_windows_home]]]]
+menu_options = [
+    ["General Optimizations", "General performance and gaming optimizations", [
+        ["Telemetry", "Disables Windows telemetry", "Yes", disable_telemetry],
+        ["Services", "Disables unnecessary services that slow down startup", "Yes", improve_startup],
+        ["Responsiveness", "Improve system responsiveness", "Yes", improve_responsiveness],
+        ["Auto Update", "Disabled Windows auto update", "Yes", disable_autoupdate],
+        ["Powerplan", "Installs optimized ultimate powerplan", "Yes", install_powerplan]]],
+    ["Network Optimizations", "Wi-Fi and Ethernet optimizations", [
+        ["DNS", "Set DNS to Cloudflare and Google DNS servers", "No", update_dns],
+        ["Services", "Configure network services", "No", disable_services],
+        ["Throttling", "Disable network throttling", "No", disable_throttling],
+        ["Adapter", "Configure network adapter", "No", configure_adapter]]],
+    ["Software Activation", "Activate software and Windows", [
+        ["Activate Windows", "Activates Windows Pro edition", "No", activate_windows_pro],
+        ["Activate WinRAR", "Activates Windows Home edition", "No", activate_winrar]]],
+    ["Registry", "Options for restoring or backing up registry", [
+        ["Restore", "Opens recovery control panel", "", restore_registry],
+        ["Backup", "Backs up registry", "", backup_registry]]]
+    ]
 
 def display_sections() -> None:
     table = Table(box=box.MINIMAL)
