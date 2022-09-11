@@ -24,9 +24,9 @@ def main() -> None:
         clear_screen()
         
         display_options(menu_options[section])
-        option = get_option_input(section)
+        option = get_option_input(section) - 1
 
-        if option > len(menu_options[section][2]):
+        if option + 1 > len(menu_options[section][2]):
             continue
         
         resolve_option(section, option)
