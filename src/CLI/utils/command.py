@@ -1,14 +1,14 @@
-import subprocess
-
+from subprocess import run, DEVNULL
+from rich.console import Console
 
 def execute_command(command: str) -> None:
     if command is None:
         raise ValueError("command can't be empty")
 
-    process = subprocess.run(f"powershell {command}", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True, capture_output=False)
+    process = run(command, stdout=DEVNULL, stderr=DEVNULL, shell=True, capture_output=False)
 
     if process.returncode != 0:
-        print("  - Failed to run: " + command)
+        Console().print(" - Failed to run: [bold red]" + command + "[/bold red]")
 
 def execute_commands(commands: list) -> None:
     if commands is None:
