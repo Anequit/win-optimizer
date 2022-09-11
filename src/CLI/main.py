@@ -3,6 +3,7 @@ from menu import *
 from ctypes import windll
 from os import name
 from sys import executable, argv, exit
+from options.registry import backup_registry
 
 
 def is_admin() -> bool:
@@ -31,10 +32,11 @@ def main() -> None:
         input("Press any key to close..")
         exit(0)
         
-    # FIXME: Make != into ==
-    if(is_admin() != False):
+    if(is_admin() == False):
         elevate_privileges()
         
+    backup_registry()
+    
     while(True):
         clear_screen()
         
@@ -54,7 +56,5 @@ def main() -> None:
         
         resolve_option(section, option)
         
-        
 if __name__ == "__main__":
     main()
-
