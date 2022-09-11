@@ -2,10 +2,6 @@ from utils import system
 from sys import exit
 from menu import *
 
-
-def get_input():
-    pass
-
 def main() -> None:
     if(system.is_windows() == False):
         print("This script is only designed to run on Windows operating systems.")
