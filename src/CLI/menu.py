@@ -1,9 +1,10 @@
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
-from rich.prompt import IntPrompt
+from rich.prompt import IntPrompt, Confirm
 from rich import box
 from os import system
+from utils.command import execute_command
 
 from options.general_optimizations import *
 from options.network_optimizations import *
@@ -12,22 +13,22 @@ from options.registry import *
 
 menu_options = [
     ["General Optimizations", "General performance and gaming optimizations", [
-        ["Telemetry", "Disables Windows telemetry", "Yes", disable_telemetry],
-        ["Services", "Disables unnecessary services that slow down startup", "Yes", improve_startup],
-        ["Responsiveness", "Improve system responsiveness", "Yes", improve_responsiveness],
-        ["Auto Update", "Disabled Windows auto update", "Yes", disable_autoupdate],
-        ["Powerplan", "Installs optimized ultimate powerplan", "Yes", install_powerplan]]],
+        ["Telemetry", "Disables Windows telemetry", True, disable_telemetry],
+        ["Services", "Disables unnecessary services that slow down startup", True, improve_startup],
+        ["Responsiveness", "Improve system responsiveness", True, improve_responsiveness],
+        ["Auto Update", "Disabled Windows auto update", True, disable_autoupdate],
+        ["Powerplan", "Installs optimized ultimate powerplan", True, install_powerplan]]],
     ["Network Optimizations", "Wi-Fi and Ethernet optimizations", [
-        ["DNS", "Set DNS to Cloudflare and Google DNS servers", "No", update_dns],
-        ["Services", "Configure network services", "No", disable_services],
-        ["Throttling", "Disable network throttling", "No", disable_throttling],
-        ["Adapter", "Configure network adapter", "No", configure_adapter]]],
+        ["DNS", "Set DNS to Cloudflare and Google DNS servers", False, update_dns],
+        ["Services", "Configure network services", False, disable_services],
+        ["Throttling", "Disable network throttling", False, disable_throttling],
+        ["Adapter", "Configure network adapter", False, configure_adapter]]],
     ["Software Activation", "Activate software and Windows", [
-        ["Activate Windows", "Activates Windows Pro edition", "No", activate_windows_pro],
-        ["Activate WinRAR", "Activates Windows Home edition", "No", activate_winrar]]],
+        ["Activate Windows", "Activates Windows Pro edition", False, activate_windows_pro],
+        ["Activate WinRAR", "Activates Windows Home edition", False, activate_winrar]]],
     ["Registry", "Options for restoring or backing up registry", [
-        ["Restore", "Opens recovery control panel", "No", restore_registry],
-        ["Backup", "Backs up registry", "Yes", backup_registry]]]
+        ["Restore", "Opens recovery control panel", False, restore_registry],
+        ["Backup", "Backs up registry", True, backup_registry]]]
     ]
 
 def display_sections() -> None:
@@ -55,7 +56,15 @@ def display_options(section: list) -> None:
     table.add_column("Reversible", justify="center")
         
     for item in range(len(section[2])):
-        table.add_row(f"{item + 1}: {section[2][item][0]}", section[2][item][1], section[2][item][2])
+        reversable = section[2][item][2]
+        
+        if(reversable == True):
+            reversable = f"[bold green]Yes[/bold green]"
+        
+        else:
+            reversable = f"[bold red]No[/bold red]"
+            
+        table.add_row(f"{item + 1}: {section[2][item][0]}", section[2][item][1], reversable)
     
     table.add_row(f"{len(section[2]) + 1}: Home", "Returns to home page")
     
@@ -92,5 +101,14 @@ def resolve_option(section: int, option: int) -> None:
     
     menu_options[section][2][option][3]()
 
+def restart() -> None:
+    result = Confirm.ask("Would you like to restart? ", default="y", show_default=True)
+
+    if(result == True):
+        execute_command("shutdown -r -t 5")
+
 def clear_screen() -> None:
     system("cls")
+    
+def newline() -> None:
+    Console().print("")
