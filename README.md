@@ -40,9 +40,9 @@ File integrity allows you to verify that the file you downloaded is identical th
 
 1. Start by downloading the latest version [here](https://github.com/Anequit/win-optimizer/releases/latest), then copy and save the SHA256 hash.
 
-2. Open powershell and navigate to the directory where `WinOptimizer.exe` is located.
+2. Open powershell and navigate to the directory where `win-optimizer.exe` is located.
 
-3. Run the command `Get-FileHash .\WinOptimizer.exe`.
+3. Run the command `Get-FileHash -A SHA256 .\win-optimizer.exe`.
 
 4. Compare the hash listed with the hash from the release page.
 
