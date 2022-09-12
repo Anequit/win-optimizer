@@ -35,7 +35,7 @@ def main() -> None:
     if(is_admin() == False):
         elevate_privileges()
         
-    backup_registry()
+    backup_registry(False)
     
     while(True):
         clear_screen()
