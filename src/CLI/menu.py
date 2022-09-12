@@ -114,7 +114,7 @@ def resolve_option(section: int, option: int) -> None:
     menu_options[section][2][option][3]()
 
 def restart() -> None:
-    result = Confirm.ask("Would you like to restart? ", default="y", show_default=True)
+    result = Confirm.ask("Would you like to restart? ", default=True, show_default=True)
 
     if(result == True):
         execute_command("shutdown -r -t 5")
