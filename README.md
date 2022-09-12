@@ -30,7 +30,7 @@ Due to how this program writes changes to Windows it's flagged as a virus. If th
 ### Windows activation keeps failing?
 1. Run `Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T` as admin in either CMD or Powershell
 
-2. Wait for until it finishes restarting
+2. Wait until it finishes restarting
 
 3. Retry activating
 
