@@ -8,5 +8,7 @@ Rename-Item ".\dist" ".\bin"
 
 Set-Location ".\bin"
 
+Get-FileHash -A SHA256 ".\win-optimizer.exe"
+
 explorer.exe .
 Set-Location ..
