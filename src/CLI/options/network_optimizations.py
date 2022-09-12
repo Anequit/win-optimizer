@@ -10,7 +10,10 @@ def update_dns() -> None:
         r'netsh interface ipv6 set dnsservers Wi-Fi static 8.8.8.8 primary',
         r'netsh interface ipv6 set dnsservers Wi-Fi static 1.1.1.1 primary',
         r'netsh interface ipv6 set dnsservers Ethernet static 8.8.8.8 primary',
-        r'netsh interface ipv6 set dnsservers Ethernet static 1.1.1.1 primary'    
+        r'netsh interface ipv6 set dnsservers Ethernet static 1.1.1.1 primary',
+        r'ipconfig /flushdns',
+        r'ipconfig /release',
+        r'ipconfig /renew'
     ])
 
 def disable_services() -> None:
