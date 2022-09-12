@@ -2,7 +2,7 @@ from utils.command import execute_command
 from rich.prompt import Confirm
 
 
-def backup_registry(skip_prompt: bool = False) -> None:
+def backup_registry(skip_prompt: bool = True) -> None:
     if(skip_prompt == False):
         result = Confirm.ask("Would you like to backup the registry?", default=True, show_default=True)
         
