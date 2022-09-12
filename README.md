@@ -30,7 +30,7 @@ Due to how this program writes changes to Windows it's flagged as a virus. If th
 ### Windows activation keeps failing?
 1. Run `Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T` as admin in either CMD or Powershell
 
-2. Wait for until it finishes restarting
+2. Wait until it finishes restarting
 
 3. Retry activating
 
@@ -40,9 +40,9 @@ File integrity allows you to verify that the file you downloaded is identical th
 
 1. Start by downloading the latest version [here](https://github.com/Anequit/win-optimizer/releases/latest), then copy and save the SHA256 hash.
 
-2. Open powershell and navigate to the directory where `WinOptimizer.exe` is located.
+2. Open powershell and navigate to the directory where `win-optimizer.exe` is located.
 
-3. Run the command `Get-FileHash .\WinOptimizer.exe`.
+3. Run the command `Get-FileHash -A SHA256 .\win-optimizer.exe`.
 
 4. Compare the hash listed with the hash from the release page.
 
