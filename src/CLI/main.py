@@ -44,8 +44,6 @@ def main() -> None:
         
         display_sections()
         
-        newline()
-        
         section = get_section_input() - 1
 
         if section + 1 > len(menu_options):
@@ -57,16 +55,12 @@ def main() -> None:
         
         display_options(menu_options[section])
         
-        newline()
-        
         option = get_option_input(section) - 1
 
         if option + 1 > len(menu_options[section][2]):
             continue
         
         resolve_option(section, option)
-        
-        newline()
         
         restart()
         

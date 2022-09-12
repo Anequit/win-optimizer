@@ -55,6 +55,7 @@ def display_sections() -> None:
     table.add_row(f"{len(menu_options) + 1}: Quit", "Exit application")
     
     Console().print(Panel(title="Home", title_align="left", renderable=table, padding=(0, 0), highlight=True))
+    Console().print("")
 
 def display_options(section: list) -> None:
     table = Table(box=box.MINIMAL, expand=True)
@@ -79,6 +80,7 @@ def display_options(section: list) -> None:
     table.add_row(f"{len(section[2]) + 1}: Home", "Returns to home page")
     
     Console().print(Panel(title=section[0], title_align="left", renderable=table, padding=(0, 0), highlight=True))
+    Console().print("")
 
 def get_section_input() -> int:
     "Prompt user to enter a value"
@@ -119,6 +121,3 @@ def restart() -> None:
 
 def clear_screen() -> None:
     system("cls")
-    
-def newline() -> None:
-    Console().print("")
