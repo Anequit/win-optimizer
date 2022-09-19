@@ -6,17 +6,6 @@ from sys import executable, argv, exit
 from options.registry import backup_registry
 
 
-def is_admin() -> bool:
-    "Check for administrator privileges"
-    
-    return windll.Shell32.IsUserAnAdmin()
-
-def elevate_privileges() -> None:
-    "Elevate script to administrator privileges"
-
-    windll.shell32.ShellExecuteW(None, "runas", executable, " ".join(argv), None, 1)
-    exit(0)
-
 def is_windows() -> bool:
     "Check if OS is Windows"
     
@@ -31,9 +20,6 @@ def main() -> None:
         print("This script is only designed to run on Windows operating systems.")
         input("Press any key to close..")
         exit(0)
-        
-    if(is_admin() == False):
-        elevate_privileges()
         
     backup_registry(False)
     
