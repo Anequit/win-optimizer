@@ -67,15 +67,15 @@ def display_options(section: list) -> None:
     table.add_column("Reversible", justify="center")
         
     for item in range(len(section[2])):
-        reversable = section[2][item][2]
+        reversible = section[2][item][2]
         
-        if(reversable == True):
-            reversable = f"[bold green]Yes[/bold green]"
+        if(reversible == True):
+            reversible = f"[bold green]Yes[/bold green]"
         
         else:
-            reversable = f"[bold red]No[/bold red]"
+            reversible = f"[bold red]No[/bold red]"
             
-        table.add_row(f"{item + 1}: {section[2][item][0]}", section[2][item][1], reversable)
+        table.add_row(f"{item + 1}: {section[2][item][0]}", section[2][item][1], reversible)
     
     table.add_row(f"{len(section[2]) + 1}: Home", "Returns to home page")
     
