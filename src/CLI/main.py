@@ -1,8 +1,7 @@
 from sys import exit
 from menu import *
-from ctypes import windll
 from os import name
-from sys import executable, argv, exit
+from sys import exit
 from options.registry import backup_registry
 
 
