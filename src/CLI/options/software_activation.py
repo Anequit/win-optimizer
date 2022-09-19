@@ -1,13 +1,15 @@
-from utils.command import execute_commands
+from utils.command import execute_command
 from os.path import isdir
+from time import sleep
 
 def activate_windows_pro() -> None:
-    execute_commands([
-        r'powershell Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T'
-        r'slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX',
-        r'slmgr.vbs /skms kms8.msguides.com',
-        r'slmgr.vbs /ato'
-    ])
+    execute_command(r"powershell Changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T")
+    sleep(3) # Don't remove or it will fail to activate
+    execute_command(r"slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
+    sleep(3) # Don't remove or it will fail to activate
+    execute_command(r"slmgr.vbs /skms kms8.msguides.com")
+    sleep(3) # Don't remove or it will fail to activate
+    execute_command(r"slmgr.vbs /ato")
 
 def activate_winrar() -> None:
     # check if winrar is installed
