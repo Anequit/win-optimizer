@@ -1,21 +1,12 @@
 from sys import exit
 from menu import *
-from os import name
+from os import name as osname
 from sys import exit
 from options.registry import backup_registry
 
 
-def is_windows() -> bool:
-    "Check if OS is Windows"
-    
-    # Check for NT
-    if(name != "nt"):
-        return False
-    
-    return True
-
 def main() -> None:
-    if(is_windows() == False):
+    if(osname != "nt"):
         print("This script is only designed to run on Windows operating systems.")
         input("Press any key to close..")
         exit(0)
