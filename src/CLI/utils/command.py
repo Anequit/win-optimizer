@@ -5,7 +5,7 @@ def execute_command(command: str) -> None:
     if command is None:
         raise ValueError("command can't be empty")
 
-    process = run(command, stdout=DEVNULL, stderr=DEVNULL, shell=True, capture_output=False)
+    process = run(command, stdout=DEVNULL, stderr=DEVNULL, shell=False, capture_output=False)
 
     if process.returncode != 0:
         Console().print(" - Failed to run: [bold red]" + command + "[/bold red]")
