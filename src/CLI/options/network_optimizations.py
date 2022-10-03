@@ -3,17 +3,13 @@ from utils.command import execute_commands
 
 def update_dns() -> None:
     execute_commands([
-        r'netsh interface ipv4 set dnsservers Wi-Fi static 8.8.8.8 primary',
-        r'netsh interface ipv4 set dnsservers Wi-Fi static 1.1.1.1 primary',
-        r'netsh interface ipv4 set dnsservers Ethernet static 8.8.8.8 primary',
-        r'netsh interface ipv4 set dnsservers Ethernet static 1.1.1.1 primary',
-        r'netsh interface ipv6 set dnsservers Wi-Fi static 8.8.8.8 primary',
-        r'netsh interface ipv6 set dnsservers Wi-Fi static 1.1.1.1 primary',
-        r'netsh interface ipv6 set dnsservers Ethernet static 8.8.8.8 primary',
-        r'netsh interface ipv6 set dnsservers Ethernet static 1.1.1.1 primary',
+        r'netsh interface ip set dns Wi-Fi dhcp',
+        r'netsh interface ip set dns Wi-Fi static 8.8.8.8',
+        r'netsh interface ip add dns Wi-Fi 1.1.1.1 index=2',
         r'ipconfig /flushdns',
         r'ipconfig /release',
-        r'ipconfig /renew'
+        r'ipconfig /renew',
+        r'ipconfig /registerdns'
     ])
 
 def disable_services() -> None:
