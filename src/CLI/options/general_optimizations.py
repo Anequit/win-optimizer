@@ -14,6 +14,7 @@ def disable_telemetry() -> None:
         r'reg add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\SQMClient\Windows" /v CEIPEnable /t REG_DWORD /d 0 /f'
     ])
 
+
 def improve_startup() -> None:
     execute_commands([
         r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AxInstSV" /v Start /t REG_DWORD /d 3 /f',
@@ -32,6 +33,7 @@ def improve_startup() -> None:
         r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v HiberbootEnabled /t REG_DWORD /d 0 /f',
         r'bcdedit /timeout 6'
     ])
+
 
 def improve_responsiveness() -> None:
     execute_commands([
@@ -74,6 +76,7 @@ def improve_responsiveness() -> None:
         r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f'
     ])
 
+
 def disable_autoupdate() -> None:
     execute_commands([
         r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AutoInstallMinorUpdates /t REG_DWORD /d 0 /f',
@@ -82,6 +85,7 @@ def disable_autoupdate() -> None:
         r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v SetAutoRestartNotificationDisable /t REG_DWORD /d 1 /f',
         r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps" /v AutoDownloadAndUpdateMapData /t REG_DWORD /d 0 /f'
     ])
+
 
 def install_powerplan() -> None:
     execute_commands([

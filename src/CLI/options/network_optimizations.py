@@ -12,6 +12,7 @@ def update_dns() -> None:
         r'ipconfig /registerdns'
     ])
 
+
 def disable_services() -> None:
     execute_commands([
         r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v LocalPriority /t REG_DWORD /d 4 /f',
@@ -25,6 +26,7 @@ def disable_services() -> None:
         r'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL /t REG_DWORD /d 64 /f'
     ])
 
+
 def disable_throttling() -> None:
     execute_commands([
         r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v NetworkThrottlingIndex /t REG_DWORD /d 4294967295 /f',
@@ -33,6 +35,7 @@ def disable_throttling() -> None:
         r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MAXCONNECTIONSPERSERVER" /v explorer.exe /t REG_DWORD /d 10 /f',
         r'reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MAXCONNECTIONSPER1_0SERVER" /v explorer.exe /t REG_DWORD /d 10 /f'
     ])
+
 
 def configure_adapter() -> None:
     execute_commands([

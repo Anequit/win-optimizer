@@ -1,6 +1,7 @@
 from subprocess import run, DEVNULL
 from rich.console import Console
 
+
 def execute_command(command: str) -> None:
     if command is None:
         raise ValueError("command can't be empty")
@@ -9,6 +10,7 @@ def execute_command(command: str) -> None:
 
     if process.returncode != 0:
         Console().print(" - Failed to run: [bold red]" + command + "[/bold red]")
+
 
 def execute_commands(commands: list) -> None:
     if commands is None:

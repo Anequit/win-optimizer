@@ -1,4 +1,3 @@
-from sys import exit
 from menu import *
 from os import name as osname
 from sys import exit
@@ -6,14 +5,14 @@ from options.registry import backup_registry
 
 
 def main() -> None:
-    if(osname != "nt"):
+    if osname != "nt":
         print("This script is only designed to run on Windows operating systems.")
         input("Press any key to close..")
         exit(0)
         
     backup_registry(False)
     
-    while(True):
+    while True:
         clear_screen()
         
         display_title()
@@ -40,5 +39,6 @@ def main() -> None:
         
         restart()
         
+
 if __name__ == "__main__":
     main()
