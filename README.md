@@ -14,7 +14,7 @@ This tool optimizes windows to it's fullest potential, disables telemetry/data c
 ### Flagged as virus?
 Due to how this program writes changes to Windows it's flagged as a virus. If that worries you, then you can compile the binary yourself with the guide below.
 
-1. Download the [latest version](https://www.python.org/downloads/) of Python.
+1. Download [python 3.10](https://www.python.org/downloads/release/python-3100/).
 
 2. Clone the repository or download as zip and extract it. If you don't know how to do that then [here](https://www.youtube.com/watch?v=X5e3xQBeqf8) is a tutorial.
 
