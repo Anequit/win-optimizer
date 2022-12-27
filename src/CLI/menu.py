@@ -23,9 +23,6 @@ menu_options = [
         ["Services", "Configure network services", False, disable_services],
         ["Throttling", "Disable network throttling", False, disable_throttling],
         ["Adapter", "Configure network adapter", False, configure_adapter]]],
-    ["Software Activation", "Activate software and Windows", [
-        ["Activate Windows", "Activates Windows Pro edition", False, activate_windows_pro],
-        ["Activate WinRAR", "Activates Windows Home edition", False, activate_winrar]]],
     ["Registry", "Options for restoring or backing up registry", [
         ["Restore", "Opens recovery control panel", False, restore_registry],
         ["Backup", "Backs up registry", True, backup_registry]]]
