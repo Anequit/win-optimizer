@@ -1,15 +1,15 @@
-from rich.console import Console
-from rich.table import Table
-from rich.panel import Panel
-from rich.prompt import IntPrompt, Confirm
-from rich import box
 from os import system
-from utils.command import execute_command
+
+from rich import box
+from rich.console import Console
+from rich.panel import Panel
+from rich.prompt import IntPrompt
+from rich.table import Table
 
 from options.general_optimizations import *
 from options.network_optimizations import *
-from options.software_activation import *
 from options.registry import *
+from utils.command import *
 
 menu_options = [
     ["General Optimizations", "General performance and gaming optimizations", [
