@@ -1,4 +1,4 @@
-from utils.command import execute_commands
+from src.utils.command import execute_commands
 
 
 def update_dns() -> None:

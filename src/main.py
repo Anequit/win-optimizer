@@ -1,12 +1,12 @@
-from menu import *
+from src.menu import *
 from os import name as osname
 from sys import exit
-from options.registry import backup_registry
+from src.options.registry import backup_registry
 
 
 def main() -> None:
     if osname != "nt":
-        print("This script is only designed to run on Windows operating systems.")
+        print("This script is only designed to run on the Windows operating system.")
         input("Press any key to close..")
         exit(0)
         

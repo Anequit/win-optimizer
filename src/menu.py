@@ -6,10 +6,10 @@ from rich.panel import Panel
 from rich.prompt import IntPrompt
 from rich.table import Table
 
-from options.general_optimizations import *
-from options.network_optimizations import *
-from options.registry import *
-from utils.command import *
+from src.options.general_optimizations import *
+from src.options.network_optimizations import *
+from src.options.registry import *
+from src.utils.command import *
 
 menu_options = [
     ["General Optimizations", "General performance and gaming optimizations", [
@@ -17,7 +17,7 @@ menu_options = [
         ["Services", "Disables unnecessary services that slow down startup", True, improve_startup],
         ["Responsiveness", "Improve system responsiveness", True, improve_responsiveness],
         ["Auto Update", "Disabled Windows auto update", True, disable_autoupdate],
-        ["Powerplan", "Installs optimized ultimate powerplan", True, install_powerplan]]],
+        ["Power Plan", "Installs optimized ultimate Power Plan", True, install_powerplan]]],
     ["Network Optimizations", "Wi-Fi and Ethernet optimizations", [
         ["DNS", "Set DNS to Cloudflare and Google DNS servers", False, update_dns],
         ["Services", "Configure network services", False, disable_services],
